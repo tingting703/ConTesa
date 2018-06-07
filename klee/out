@@ -1,0 +1,180 @@
+make[1]: Entering directory `/home/tyu/Documents/bugredx/klee2.9/lib'
+make[2]: Entering directory `/home/tyu/Documents/bugredx/klee2.9/lib/Basic'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/tyu/Documents/bugredx/klee2.9/lib/Basic'
+make[2]: Entering directory `/home/tyu/Documents/bugredx/klee2.9/lib/Support'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/tyu/Documents/bugredx/klee2.9/lib/Support'
+make[2]: Entering directory `/home/tyu/Documents/bugredx/klee2.9/lib/Expr'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/tyu/Documents/bugredx/klee2.9/lib/Expr'
+make[2]: Entering directory `/home/tyu/Documents/bugredx/klee2.9/lib/Solver'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/tyu/Documents/bugredx/klee2.9/lib/Solver'
+make[2]: Entering directory `/home/tyu/Documents/bugredx/klee2.9/lib/Module'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/tyu/Documents/bugredx/klee2.9/lib/Module'
+make[2]: Entering directory `/home/tyu/Documents/bugredx/klee2.9/lib/Core'
+llvm[2]: Compiling Searcher.cpp for Release build
+In file included from Executor.h:18:0,
+                 from Searcher.cpp:15:
+/home/tyu/Documents/bugredx/klee2.9/include/klee/ExecutionState.h: In constructor ‘klee::ExecutionState::ExecutionState()’:
+/home/tyu/Documents/bugredx/klee2.9/include/klee/ExecutionState.h:98:14: warning: ‘klee::ExecutionState::ptreeNode’ will be initialized after [-Wreorder]
+/home/tyu/Documents/bugredx/klee2.9/include/klee/ExecutionState.h:75:7: warning:   ‘int klee::ExecutionState::bugReduxDepth’ [-Wreorder]
+/home/tyu/Documents/bugredx/klee2.9/include/klee/ExecutionState.h:119:3: warning:   when initialized here [-Wreorder]
+Searcher.cpp: In member function ‘void klee::GeneralReplaySearcher::generateFuncShort()’:
+Searcher.cpp:161:19: warning: unused variable ‘curFunc’ [-Wunused-variable]
+Searcher.cpp: In member function ‘virtual void klee::GeneralReplaySearcher::update(klee::ExecutionState*, const std::set<klee::ExecutionState*>&, const std::set<klee::ExecutionState*>&)’:
+Searcher.cpp:324:12: warning: variable ‘ok’ set but not used [-Wunused-but-set-variable]
+Searcher.cpp: In constructor ‘klee::CallSeqReplaySearcher::CallSeqReplaySearcher(klee::Executor&)’:
+Searcher.cpp:474:17: warning: name lookup of ‘i’ changed [enabled by default]
+Searcher.cpp:436:16: warning:   matches this ‘i’ under ISO standard rules [enabled by default]
+Searcher.cpp:454:17: warning:   matches this ‘i’ under old rules [enabled by default]
+Searcher.cpp: In member function ‘void klee::CallSeqReplaySearcher::generateNewShortDistance()’:
+Searcher.cpp:574:6: error: ‘cerr’ was not declared in this scope
+Searcher.cpp:574:6: note: suggested alternative:
+/usr/include/c++/4.6/iostream:63:18: note:   ‘std::cerr’
+Searcher.cpp:574:29: error: ‘minBB’ was not declared in this scope
+Searcher.cpp:626:18: warning: unused variable ‘entryBB’ [-Wunused-variable]
+Searcher.cpp: In member function ‘virtual klee::ExecutionState& klee::CallSeqReplaySearcher::selectState()’:
+Searcher.cpp:681:44: error: ‘callStackPtr’ was not declared in this scope
+Searcher.cpp:694:28: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:701:41: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:749:55: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:763:24: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:861:64: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:876:30: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:940:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp: In member function ‘llvm::Instruction* klee::ShortestPathSearcher::findInstFromSourceLine(std::string)’:
+Searcher.cpp:1152:30: error: no match for ‘operator<<’ in ‘std::cerr << * ki->klee::KInstruction::inst’
+Searcher.cpp:1152:30: note: candidates are:
+/usr/include/c++/4.6/ostream:110:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ostream_type& (*)(std::basic_ostream<_CharT, _Traits>::__ostream_type&)) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:110:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘std::basic_ostream<char>::__ostream_type& (*)(std::basic_ostream<char>::__ostream_type&) {aka std::basic_ostream<char>& (*)(std::basic_ostream<char>&)}’
+/usr/include/c++/4.6/ostream:119:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__ios_type& (*)(std::basic_ostream<_CharT, _Traits>::__ios_type&)) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>, std::basic_ostream<_CharT, _Traits>::__ios_type = std::basic_ios<char>]
+/usr/include/c++/4.6/ostream:119:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘std::basic_ostream<char>::__ios_type& (*)(std::basic_ostream<char>::__ios_type&) {aka std::basic_ios<char>& (*)(std::basic_ios<char>&)}’
+/usr/include/c++/4.6/ostream:129:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::ios_base& (*)(std::ios_base&)) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:129:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘std::ios_base& (*)(std::ios_base&)’
+/usr/include/c++/4.6/ostream:167:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long int) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:167:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘long int’
+/usr/include/c++/4.6/ostream:171:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long unsigned int) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:171:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘long unsigned int’
+/usr/include/c++/4.6/ostream:175:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(bool) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:175:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘bool’
+/usr/include/c++/4.6/bits/ostream.tcc:93:5: note: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(short int) [with _CharT = char, _Traits = std::char_traits<char>]
+/usr/include/c++/4.6/bits/ostream.tcc:93:5: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘short int’
+/usr/include/c++/4.6/ostream:182:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(short unsigned int) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:182:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘short unsigned int’
+/usr/include/c++/4.6/bits/ostream.tcc:107:5: note: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT = char, _Traits = std::char_traits<char>]
+/usr/include/c++/4.6/bits/ostream.tcc:107:5: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘int’
+/usr/include/c++/4.6/ostream:193:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(unsigned int) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:193:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘unsigned int’
+/usr/include/c++/4.6/ostream:202:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long int) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:202:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘long long int’
+/usr/include/c++/4.6/ostream:206:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long unsigned int) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:206:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘long long unsigned int’
+/usr/include/c++/4.6/ostream:211:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(double) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:211:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘double’
+/usr/include/c++/4.6/ostream:215:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(float) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:215:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘float’
+/usr/include/c++/4.6/ostream:223:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long double) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:223:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘long double’
+/usr/include/c++/4.6/ostream:227:7: note: std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(const void*) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__ostream_type = std::basic_ostream<char>]
+/usr/include/c++/4.6/ostream:227:7: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘const void*’
+/usr/include/c++/4.6/bits/ostream.tcc:121:5: note: std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(std::basic_ostream<_CharT, _Traits>::__streambuf_type*) [with _CharT = char, _Traits = std::char_traits<char>, std::basic_ostream<_CharT, _Traits>::__streambuf_type = std::basic_streambuf<char>]
+/usr/include/c++/4.6/bits/ostream.tcc:121:5: note:   no known conversion for argument 1 from ‘llvm::Instruction’ to ‘std::basic_ostream<char>::__streambuf_type* {aka std::basic_streambuf<char>*}’
+/home/tyu/Documents/bugredx/klee2.9/include/klee/util/Ref.h:110:22: note: template<class T> std::ostream& klee::operator<<(std::ostream&, const klee::ref<T>&)
+/home/tyu/Documents/bugredx/klee2.9/include/klee/Expr.h:292:22: note: std::ostream& klee::operator<<(std::ostream&, const klee::Expr&)
+/home/tyu/Documents/bugredx/klee2.9/include/klee/Expr.h:292:22: note:   no known conversion for argument 2 from ‘llvm::Instruction’ to ‘const klee::Expr&’
+/home/tyu/Documents/bugredx/klee2.9/include/klee/Expr.h:297:22: note: std::ostream& klee::operator<<(std::ostream&, klee::Expr::Kind)
+/home/tyu/Documents/bugredx/klee2.9/include/klee/Expr.h:297:22: note:   no known conversion for argument 2 from ‘llvm::Instruction’ to ‘klee::Expr::Kind’
+/home/tyu/Documents/bugredx/klee2.9/include/klee/ExecutionState.h:35:15: note: std::ostream& klee::operator<<(std::ostream&, const MemoryMap&)
+/home/tyu/Documents/bugredx/klee2.9/include/klee/ExecutionState.h:35:15: note:   no known conversion for argument 2 from ‘llvm::Instruction’ to ‘const MemoryMap& {aka const klee::ImmutableMap<const klee::MemoryObject*, klee::ObjectHolder, klee::MemoryObjectLT>&}’
+/usr/include/c++/4.6/ostream:528:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const unsigned char*)
+/usr/include/c++/4.6/ostream:523:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const signed char*)
+/usr/include/c++/4.6/ostream:510:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, const char*)
+/usr/include/c++/4.6/bits/ostream.tcc:323:5: note: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const char*)
+/usr/include/c++/4.6/ostream:493:5: note: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const _CharT*)
+/usr/include/c++/4.6/ostream:473:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, unsigned char)
+/usr/include/c++/4.6/ostream:468:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, signed char)
+/usr/include/c++/4.6/ostream:462:5: note: template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(std::basic_ostream<char, _Traits>&, char)
+/usr/include/c++/4.6/ostream:456:5: note: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, char)
+/usr/include/c++/4.6/ostream:451:5: note: template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, _CharT)
+/usr/include/c++/4.6/bits/basic_string.h:2693:5: note: template<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_CharT, _Traits>& std::operator<<(std::basic_ostream<_CharT, _Traits>&, const std::basic_string<_CharT, _Traits, _Alloc>&)
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/Analysis/Dominators.h:155:21: note: template<class NodeT> llvm::raw_ostream& llvm::operator<<(llvm::raw_ostream&, const llvm::DomTreeNodeBase<NodeT>*)
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/Module.h:549:21: note: llvm::raw_ostream& llvm::operator<<(llvm::raw_ostream&, const llvm::Module&)
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/Module.h:549:21: note:   no known conversion for argument 1 from ‘std::ostream {aka std::basic_ostream<char>}’ to ‘llvm::raw_ostream&’
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/Type.h:560:14: note: llvm::raw_ostream& llvm::operator<<(llvm::raw_ostream&, const llvm::Type&)
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/Type.h:560:14: note:   no known conversion for argument 1 from ‘std::ostream {aka std::basic_ostream<char>}’ to ‘llvm::raw_ostream&’
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/ADT/Twine.h:457:23: note: llvm::raw_ostream& llvm::operator<<(llvm::raw_ostream&, const llvm::Twine&)
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/ADT/Twine.h:457:23: note:   no known conversion for argument 1 from ‘std::ostream {aka std::basic_ostream<char>}’ to ‘llvm::raw_ostream&’
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/Value.h:318:21: note: llvm::raw_ostream& llvm::operator<<(llvm::raw_ostream&, const llvm::Value&)
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/Value.h:318:21: note:   no known conversion for argument 1 from ‘std::ostream {aka std::basic_ostream<char>}’ to ‘llvm::raw_ostream&’
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/ADT/APInt.h:1532:21: note: llvm::raw_ostream& llvm::operator<<(llvm::raw_ostream&, const llvm::APInt&)
+/home/tyu/Documents/bugredx/llvm-2.9/include/llvm/ADT/APInt.h:1532:21: note:   no known conversion for argument 1 from ‘std::ostream {aka std::basic_ostream<char>}’ to ‘llvm::raw_ostream&’
+Searcher.cpp: In member function ‘void klee::ShortestPathSearcher::findNextTarget()’:
+Searcher.cpp:1748:6: warning: unused variable ‘infinity’ [-Wunused-variable]
+Searcher.cpp: In member function ‘virtual klee::ExecutionState& klee::ShortestPathSearcher::selectState()’:
+Searcher.cpp:2037:24: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp: In constructor ‘klee::PathReplaySearcher::PathReplaySearcher(klee::Executor&)’:
+Searcher.cpp:2789:17: warning: name lookup of ‘i’ changed [enabled by default]
+Searcher.cpp:2751:16: warning:   matches this ‘i’ under ISO standard rules [enabled by default]
+Searcher.cpp:2769:17: warning:   matches this ‘i’ under old rules [enabled by default]
+Searcher.cpp: In member function ‘void klee::PathReplaySearcher::generateFuncShort()’:
+Searcher.cpp:2846:19: warning: unused variable ‘curFunc’ [-Wunused-variable]
+Searcher.cpp: In member function ‘void klee::PathReplaySearcher::generateNewShortDistance()’:
+Searcher.cpp:3124:18: warning: unused variable ‘entryBB’ [-Wunused-variable]
+Searcher.cpp: In member function ‘virtual klee::ExecutionState& klee::PathReplaySearcher::selectState()’:
+Searcher.cpp:3250:28: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:3302:55: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:3316:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:3392:10: warning: unused variable ‘v1’ [-Wunused-variable]
+Searcher.cpp:3393:10: warning: unused variable ‘v2’ [-Wunused-variable]
+Searcher.cpp:3446:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp: In constructor ‘klee::CallSeqReplayNonStopSearcher::CallSeqReplayNonStopSearcher(klee::Executor&)’:
+Searcher.cpp:4260:17: warning: name lookup of ‘i’ changed [enabled by default]
+Searcher.cpp:4222:16: warning:   matches this ‘i’ under ISO standard rules [enabled by default]
+Searcher.cpp:4240:17: warning:   matches this ‘i’ under old rules [enabled by default]
+Searcher.cpp: In member function ‘void klee::CallSeqReplayNonStopSearcher::generateFuncShort()’:
+Searcher.cpp:4317:19: warning: unused variable ‘curFunc’ [-Wunused-variable]
+Searcher.cpp: In member function ‘void klee::CallSeqReplayNonStopSearcher::generateNewShortDistance()’:
+Searcher.cpp:4596:18: warning: unused variable ‘entryBB’ [-Wunused-variable]
+Searcher.cpp: In member function ‘virtual klee::ExecutionState& klee::CallSeqReplayNonStopSearcher::selectState()’:
+Searcher.cpp:4711:28: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:4719:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:4763:55: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:4777:24: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:4854:10: warning: unused variable ‘v1’ [-Wunused-variable]
+Searcher.cpp:4855:10: warning: unused variable ‘v2’ [-Wunused-variable]
+Searcher.cpp:4875:64: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:4890:30: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:4954:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp: In member function ‘void klee::AssertionNonStopSearcher::generateFuncShort()’:
+Searcher.cpp:5186:19: warning: unused variable ‘curFunc’ [-Wunused-variable]
+Searcher.cpp: In member function ‘virtual klee::ExecutionState& klee::AssertionNonStopSearcher::selectState()’:
+Searcher.cpp:5575:29: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:5611:56: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:5626:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:5702:11: warning: unused variable ‘v1’ [-Wunused-variable]
+Searcher.cpp:5703:11: warning: unused variable ‘v2’ [-Wunused-variable]
+Searcher.cpp:5723:65: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:5738:31: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:5804:30: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:5535:19: warning: unused variable ‘backes’ [-Wunused-variable]
+Searcher.cpp: In constructor ‘klee::BranchRankingSearcher::BranchRankingSearcher(klee::Executor&)’:
+Searcher.cpp:5962:12: warning: unused variable ‘succNo’ [-Wunused-variable]
+Searcher.cpp:5950:23: warning: unused variable ‘branch’ [-Wunused-variable]
+Searcher.cpp:5951:23: warning: unused variable ‘succ’ [-Wunused-variable]
+Searcher.cpp:6020:34: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp: In member function ‘void klee::CDPass::updateCDNum(llvm::BasicBlock*, int)’:
+Searcher.cpp:6217:37: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp: In member function ‘virtual bool klee::CDPass::runOnFunction(llvm::Function&)’:
+Searcher.cpp:6249:35: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+Searcher.cpp:6261:32: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+/home/tyu/Documents/bugredx/klee2.9/include/klee/Internal/ADT/DiscretePDF.inc: In member function ‘T klee::DiscretePDF<T>::choose(double) [with T = klee::ExecutionState*]’:
+/home/tyu/Documents/bugredx/klee2.9/include/klee/Internal/ADT/DiscretePDF.inc:186:1: warning: control reaches end of non-void function [-Wreturn-type]
+/bin/rm: cannot remove `/home/tyu/Documents/bugredx/klee2.9/lib/Core/Release/Searcher.d.tmp': No such file or directory
+make[2]: *** [/home/tyu/Documents/bugredx/klee2.9/lib/Core/Release/Searcher.o] Error 1
+make[2]: Leaving directory `/home/tyu/Documents/bugredx/klee2.9/lib/Core'
+make[1]: *** [Core/.makeall] Error 2
+make[1]: Leaving directory `/home/tyu/Documents/bugredx/klee2.9/lib'
+make: *** [all] Error 1

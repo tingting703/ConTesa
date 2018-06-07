@@ -1,0 +1,14 @@
+Test Run By tyu on Thu May 21 22:18:59 2015
+Native configuration is x86_64-unknown-linux-gnu
+
+		===  tests ===
+
+Schedule of variations:
+    unix
+
+Running target unix
+Using /usr/share/dejagnu/baseboards/unix.exp as board description file for target.
+Using /usr/share/dejagnu/config/unix.exp as generic interface file for target.
+WARNING: Couldn't find tool config file for unix, using default.
+Running ./test/CXX/dg.exp ...
+ERROR: Couldn't find library file llvm.exp.

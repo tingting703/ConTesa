@@ -1,0 +1,13 @@
+/Checks.cpp/1.1/Thu May 21 20:38:32 2015//
+/InstructionInfoTable.cpp/1.1/Thu May 21 20:38:32 2015//
+/IntrinsicCleaner.cpp/1.1/Thu May 21 20:38:32 2015//
+/KInstruction.cpp/1.1/Thu May 21 20:38:32 2015//
+/KModule.cpp/1.1/Sun Dec  6 19:34:52 2015//
+/LowerSwitch.cpp/1.1/Thu May 21 20:38:32 2015//
+/Makefile/1.1/Thu May 21 20:38:32 2015//
+/ModuleUtil.cpp/1.1/Thu May 21 20:38:32 2015//
+/Optimize.cpp/1.1/Thu May 21 20:38:32 2015//
+/Passes.h/1.1/Thu May 21 20:38:32 2015//
+/PhiCleaner.cpp/1.1/Thu May 21 20:38:32 2015//
+/RaiseAsm.cpp/1.1/Thu May 21 20:38:32 2015//
+D/Release+Asserts////

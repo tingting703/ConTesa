@@ -1,0 +1,10 @@
+Test Run By tyu on Thu May 21 22:18:59 2015
+Native configuration is x86_64-unknown-linux-gnu
+
+		===  tests ===
+
+Schedule of variations:
+    unix
+
+Running target unix
+Running ./test/CXX/dg.exp ...
