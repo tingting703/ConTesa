@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_config_html_configuration_a_8594_a_href_config_virtual_servers_html_virtual_servers_a"><a href="index.html">Index</a> &#8594; <a href="config.html">Configuration</a> &#8594; <a href="config_virtual_servers.html">Virtual servers</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_virtual_server_rules">Virtual Server: Rules</h2>
+<div class="sectionbody">
+<div class="para"><p>Besides the connection handler set for the rule, there are other
+parameters that can be set in order to customize the rule behavior.
+This menu offers the following tabs:</p></div>
+<div class="olist"><ol>
+<li>
+<p>
+Rule: this is the <strong>rule type</strong>, as explained in the
+   <a href="config_virtual_servers.html">Virtual servers</a> section.
+</p>
+</li>
+<li>
+<p>
+Handler: It allows to fine tune the behavior of any of the
+   available handlers. Since so many options are available, refer to
+   the complete list of <a href="modules_handlers.html">handlers</a> shipped
+   with Cherokee.
+</p>
+</li>
+<li>
+<p>
+Encoding: to manage the compression of the contents to be sent.
+</p>
+</li>
+<li>
+<p>
+Expiration: to manage the configuration of <strong>HTTP Cache headers</strong>
+   used to identify cacheable content.
+</p>
+</li>
+<li>
+<p>
+Security: in this section one can configure <strong>Access Restrictions</strong>
+   and <strong>Authentication</strong>.
+</p>
+</li>
+</ol></div>
+<h3 id="_encoding">Encoding</h3><div style="clear:left"></div>
+<div class="para"><p>The content sent by Cherokee can be encoded or not.
+This tab is used to configure, on a per-rule basis,  what
+<a href="modules_encoders.html">encoders</a>, if any, are to be applied.</p></div>
+<div class="para"><p>You can set up the encoding method to use, and it shall be applied to
+whatever content is handled by the parent rule.</p></div>
+<div class="para"><p>Whenever you set up a virtual server, creating a rule where
+<a href="modules_encoders_gzip.html">gzip</a> is enabled by default for the
+following file types: <tt>html</tt>, <tt>htm</tt>, <tt>txt</tt>, <tt>css</tt> and <tt>js</tt> is a good
+idea. You are encouraged to use this. Hardware is cheap. Bandwidth is
+not.</p></div>
+<h3 id="_expiration">Expiration</h3><div style="clear:left"></div>
+<div class="para"><p>HTTP/1.1 defines caching methods in HTTP. Cherokee-Admin can
+automatically adjust the <tt>Cache-Control</tt> and <tt>Expire</tt> headers depending
+on the values you have configured. The available options are:</p></div>
+<div class="olist"><ol>
+<li>
+<p>
+Not set: Does not write the caching headers.
+</p>
+</li>
+<li>
+<p>
+1970: Corresponds to the Unix Epoch.
+</p>
+</li>
+<li>
+<p>
+2038: Maximum date value representable in POSIX time.
+</p>
+</li>
+<li>
+<p>
+Custom Value: set a value by hand.
+</p>
+</li>
+</ol></div>
+<h3 id="_access_restrictions">Access Restrictions</h3><div style="clear:left"></div>
+<div class="ilist"><ul>
+<li>
+<p>
+Only https::
+  This configuration entry determines that the directory will be
+  served by the secure server (<strong>https</strong>) only.
+  If you access directory /admin or any sub-directory, throught
+  non-secure connection Cherokee will report a <strong>426 Upgrade Required
+  error</strong>.
+</p>
+</li>
+<li>
+<p>
+Allow From::
+  This parameter lets you set up rules form allow access to the
+  directory contents to some IP or IP ranges. The remote client IP
+  will be checked with all the provided list and only if the IP
+  matches with some of the rules the access will be allowed.
+</p>
+<div class="literalblock">
+<div class="content">
+<pre><tt>This field accepts a comma separated list of *Host names*, *IP
+addresses* or *IP ranges*. In the last two cases, both IPv4 and IPv6
+addresses are valid entries.</tt></pre>
+</div></div>
+</li>
+</ul></div>
+<h4 id="_examples">Examples</h4>
+<div class="ilist"><ul>
+<li>
+<p>
+Allow access only from the IPv6 localhost address
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>   Allow from ::1</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+Allow access from the 127.0.0.0/8 network
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>   Allow from 127.0.0.0/8</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+or it could also we written like
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>   Allow from 127.0.0.0/255.0.0.0</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+It is also possible to use lists instead of a single IP or network
+range. And there is even the possibility of mixing IPv4 and IPv6
+addresses and networks if you want
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    Allow from 192.168.0.0/16, ::1, 10.0.0.1, 3ffe:3200::/24</tt></pre>
+</div></div>
+</li>
+</ul></div>
+<h3 id="_authentication">Authentication</h3><div style="clear:left"></div>
+<div class="para"><p>This parameter allows to configure user/password protected entries. A
+validator has to be used in each Auth entry in order to specify the
+validaton mechanism. The following <tt>validators</tt> are available:</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+<a href="modules_validators_plain.html">plain</a> - <strong>Plain text file</strong>
+</p>
+<div class="para"><p>Uses a plain flat file to perform HTTP authentication.</p></div>
+</li>
+<li>
+<p>
+<a href="modules_validators_htpasswd.html">htpasswd</a> - <strong>Htpasswd file</strong>
+</p>
+<div class="para"><p>Uses an htpasswd file to perform HTTP authentication.</p></div>
+</li>
+<li>
+<p>
+<a href="modules_validators_htdigest.html">htdigest</a> - <strong>Htdigest file</strong>
+</p>
+<div class="para"><p>Uses an htdigest-generated file to perform HTTP authentication.</p></div>
+</li>
+<li>
+<p>
+<a href="modules_validators_ldap.html">ldap</a> - <strong>LDAP server</strong>
+</p>
+<div class="para"><p>Uses an LDAP directory to perform HTTP authentication.</p></div>
+</li>
+<li>
+<p>
+<a href="modules_validators_mysql.html">mysql</a> - <strong>MySQL server</strong>
+</p>
+<div class="para"><p>Uses a MySQL database to perform HTTP authentication.</p></div>
+</li>
+<li>
+<p>
+<a href="modules_validators_pam.html">PAM</a> - <strong>PAM Authentication</strong>
+</p>
+<div class="para"><p>Uses PAM to perform HTTP authentication.</p></div>
+</li>
+</ul></div>
+<div class="para"><p>It is important to take into consideration that there are two different
+authentication mechanisms:</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+Basic
+</p>
+</li>
+<li>
+<p>
+Digest
+</p>
+</li>
+</ul></div>
+<div class="para"><p>Some <a href="modules_validators.html">validators</a> can only handle one of
+those mechanisms because of techical  limitations. In case the module supports
+both of them, the interface allows to choose whether one or both are
+to be used.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

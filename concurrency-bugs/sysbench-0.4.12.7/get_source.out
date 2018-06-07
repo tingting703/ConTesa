@@ -1,0 +1,6 @@
+E: -pid not supported with -- <app>
+Pin 2.14
+Copyright (c) 2003-2015, Intel Corporation. All rights reserved.
+VERSION: 71293 BUILDER: BUILDER DATE: Jan 21 2015
+Usage: pin [OPTION] [-t <tool> [<toolargs>]] -- <command line>
+Use -help for a description of options

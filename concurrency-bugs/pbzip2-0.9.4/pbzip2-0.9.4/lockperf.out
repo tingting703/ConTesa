@@ -1,0 +1,6 @@
+pthread_mutex_lock	0	0	0x7fabf862c968	0	
+pthread_mutex_lock_r	0	0	0x1
+pthread_mutex_unlock	0	0	0x7fabf862c968
+pthread_mutex_lock	0x1	0	0x7fabf862c968	0xffffffff	
+pthread_mutex_lock_r	0x1	0	0x1
+pthread_mutex_unlock	0x1	0	0x7fabf862c968

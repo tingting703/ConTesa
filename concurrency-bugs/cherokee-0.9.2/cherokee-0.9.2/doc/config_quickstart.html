@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_config_html_configuration_a"><a href="index.html">Index</a> &#8594; <a href="config.html">Configuration</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_configuration_quickstart">Configuration Quickstart</h2>
+<div class="sectionbody">
+<div class="para"><p>This section briefly describes the whole administration web interface
+provided by <a href="bundle_cherokee-admin.html">cherokee-admin</a>. This is
+the only recommended way of configuring Cherokee. If you are looking
+for development information, you should refer to the appropriate
+section, especially <a href="dev_cherokee.conf.html">cherokee.conf</a> file
+specification.</p></div>
+<div class="para"><p>We will first show a quick overview of the available options, followed
+by a simple walkthrough. You can learn more about the options in their
+specific documentation entries.</p></div>
+<h3 id="_overview">Overview</h3><div style="clear:left"></div>
+<div class="ilist"><ul>
+<li>
+<p>
+<a href="config_status.html">Status</a>:
+  This gives a quick view of the server status.
+</p>
+</li>
+<li>
+<p>
+<a href="config_general.html">General</a>:
+  There are a number of entries that specify the most significant
+  configuration options such as the port - or ports - that the server
+  will listen to, the default timeout, whether to support keep-alive
+  connections and so on.
+</p>
+</li>
+<li>
+<p>
+<a href="config_virtual_servers.html">Virtual servers</a>:
+  If you want your web server to work with more than one domain you
+  will have to create <a href="config_virtual_servers.html">Virtual
+  servers</a> other than the <tt>default</tt> one. Each one will have a
+  completely independent configuration: paths, behavior, logging
+  facilities, etc.
+</p>
+</li>
+<li>
+<p>
+<a href="config_info_sources.html">Info Sources</a>:
+  Define the resources that will be providing information. For
+  instance, PHP.
+</p>
+</li>
+<li>
+<p>
+<a href="config_icons.html">Icons</a>:
+  Associate icon images with one or more file extensions. Used to
+  offer directory listings.
+</p>
+</li>
+<li>
+<p>
+<a href="config_mime_types.html">Mime Types</a>:
+  Manage MIME types.
+</p>
+</li>
+<li>
+<p>
+<a href="config_advanced.html">Advanced</a>:
+  This is to configure the most complex parameters of the server and how
+  it interacts with the operating system. If you are unsure about any of
+  the options here, better not mingle with them. Default values should
+  work just fine.
+</p>
+</li>
+</ul></div>
+<h3 id="_walkthrough">Walkthrough</h3><div style="clear:left"></div>
+<div class="para"><p>There is very little set up you must do to have a perfectly functional
+web server out of the box. Cherokee's default configuration can be
+used to serve any typical PHP-driven dynamic website.</p></div>
+<div class="para"><p>If you have a specific need, you should check out the recipes present in
+the <em>Cookbook</em> section of the documentation. Among other subjects, you
+can find information about
+<a href="cookbook_optimizations.html">Cherokee optimizations</a>,
+setting up efficient <a href="cookbook_authentication.html">Authentication</a>
+mechanisms, or configuring several popular application frameworks.</p></div>
+<div class="para"><p>In this tutorial we will be setting up a system with a couple of
+virtual servers, PHP support, some redirection rules and a simple
+authentication mechanism.</p></div>
+<div class="para"><p>To follow this walkthrough you need to be running
+<a href="bundle_cherokee-admin.html">cherokee-admin</a>. This is an
+administration tool, so you will need system administrator rights.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt># cherokee-admin
+Cherokee Web Server 0.9.0 (Sep 16 2008): Listening on port 9090, TLS disabled,
+IPv6 disabled, using epoll, 1024 fds system limit, max. 505 connections,
+single thread</tt></pre>
+</div></div>
+<div class="para"><p>Now you can access the administration interface simply by opening your
+web browser and visiting <a href="http://localhost:9090">http://localhost:9090</a></p></div>
+<div class="para"><p>If your user doesn't have enough privileges you will be notified. Also
+if no configuration file exists you will be prompted to create one
+with the default settings.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_noconfig.png" alt="cherokee.conf not present" title="cherokee.conf not present"/>
+</div>
+</div>
+<div class="para"><p>That is a good starting point. Right now your web server will not be
+running yet. We will only be using two of the available tabs to adjust
+some more settings: <a href="config_general.html">General</a> and
+<a href="config_virtual_servers.html">Virtual Servers</a>.</p></div>
+<div class="para"><p>This is an example of what you'll be seeing:</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_notrunning.png" alt="Server not launched" title="Server not launched"/>
+</div>
+</div>
+<div class="para"><p>Of course, once we're done we will have to apply our changes and
+launch the server. The configuration changes must be submitted to the
+server, be it automatically if possible or by using the appropriate form
+submitting buttons. But no change is reflected in the configuration
+file until you <tt>Apply</tt> the changes. You can be sure of not damaging
+anything while playing around with <tt>cherokee-admin</tt>. At least not
+until you <tt>Apply</tt> the changes. Note that, if the Cherokee server is
+running, the applied modifications will also affect the instance being
+executed.</p></div>
+<div class="para"><p>This is what the <tt>General</tt> tab looks like:</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_general.png" alt="General" title="General"/>
+</div>
+</div>
+<div class="para"><p>We will only be modifying the <strong>Server Permissions</strong>. It usually is a
+poor choice to run services with super user privileges. Set both
+<strong>User</strong> and <strong>Group</strong> to <tt>www-data</tt>. Your system might already have
+another user account specifically for the purpose of running a
+webserver. Use that instead if so, or create the <tt>www-data</tt> user if
+you don't already have one.</p></div>
+<div class="para"><p>Next is the <a href="config_virtual_servers.html">Virtual Servers</a> tab:</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_vserver.png" alt="Virtual server" title="Virtual server"/>
+</div>
+</div>
+<div class="para"><p>When you start, you will only have one virtual server called
+<tt>default</tt>. You can begin by cloning it as <tt>example</tt>.
+While you are at it you should also append the following line to your
+<tt>/etc/hosts</tt> file (in Windows you will find this as
+<tt>%WINDIR%\system32\drivers\etc\hosts</tt>).</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>127.0.0.1       example.net example.org</tt></pre>
+</div></div>
+<div class="para"><p>This is to allow your system to resolve requests for <tt>example.net</tt> or
+<tt>example.org</tt> locally. Of course, once you are out in the Wild (you
+know, in the Internet), you will need proper DNS records.</p></div>
+<div class="vlist"><dl>
+<dt>
+<strong><tt>default</tt></strong>
+</dt>
+<dd>
+<p>
+We will leave default untouched except for the document root path,
+which we will change. This is done through the <tt>Basics</tt> tab.
+You could create by hand <em>/var/www/default</em> for example and set it up
+in the appropriate field.
+</p>
+<div class="para"><p>If you access your machine by IP or a DNS resolution points in that
+direction for any particular domain, the contents of your document
+root directory will be exposed (<em>/var/www</em> by default unless you
+changed that during the build process). Whenever there is no match for
+a virtual server specifically defined in your list, the <tt>default</tt>
+virtual server will be the one responding.</p></div>
+<div class="para"><p>Right now any file with the <em>php</em> extension will be served after being
+processed by the PHP interpreter (you should have <tt>php-cgi</tt> installed
+in your system for this, though).</p></div>
+<div class="para"><p>Any requested file would be sent. If a directory is requested, a file
+called index.php or index.html will be served if it is present (the
+search will be performed in that order; you can configure this in the
+<tt>Basics</tt> tab). If not, a directory listing is offered instead. If you
+would want to prevent this behavior but would like to keep up
+serving whatever content is requested directly, simply change the
+<tt>List &amp; Send</tt> handler for the <tt>Static Content</tt> handler.</p></div>
+</dd>
+<dt>
+<strong><tt>example</tt></strong>
+</dt>
+<dd>
+<p>
+For now this virtual server is an exact copy of the untouched
+<tt>default</tt> virtual server. Create some new directories
+<em>/var/wwww/example</em> and <em>/var/wwww/example/auth</em>, and configure the
+first one as default document root path.
+</p>
+<div class="para"><p>Next, setup <tt>example.net</tt> and <tt>example.com</tt> in the <tt>Domain names</tt> tab.
+We'll erase everything in the <strong>Targets</strong> list within the <tt>Behavior</tt>
+tab, except the <tt>default</tt> rule. With this we'll only be able to serve
+static content.</p></div>
+<div class="para"><p>Accessing the URL <a href="http://example.org">http://example.org</a> should now show a list of
+available files and directories under <em>/var/www/example/</em>.</p></div>
+<div class="para"><p>Now lets password protect the <tt>auth</tt> directory. Add a new <tt>Directory</tt>
+class rule pointing to <tt>/auth</tt>. Then, through the <tt>Security</tt> tab, add
+a <tt>Validation Mechanism</tt> under <tt>Authentication</tt>.</p></div>
+<div class="para"><p>The field <tt>Realm</tt> is mandatory. Lets set it as <tt>Secured Area</tt>.
+If you choose <tt>PAM</tt> and impose no more restrictions, only users with
+a local account in your system will be able to access the secured zone
+at <a href="http://example.net/auth">http://example.net/auth</a>
+Other mechanisms would work in a similar fashion but with their
+specific requirements. For example, had you chosen <tt>Plain text file</tt>
+instead of PAM you would have had to specify a <tt>Password File</tt>.
+For example, it could have been <tt>/var/www/passwords.txt</tt> with the
+following contents:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>testuser1:password1
+testuser2:password2</tt></pre>
+</div></div>
+<div class="para"><p>Note that the rule must not be flagged as <tt>Final</tt>, or else no other
+rules will be applied afterwards and no access will be given to any
+contents. This is because at this point we have not defined any
+handler for the <tt>/auth</tt> rule and nothing would be served.</p></div>
+<div class="para"><p>Refer to the <a href="cookbook_authentication.html">Cookbook</a> for detailed
+examples on the different options.</p></div>
+<div class="para"><p>Lastly, lets configure a redirection rule by choosing a "Regular
+Expression" as the new rule type. Type the following regex: <tt>^/rss.*$</tt>
+Then, within the <tt>Handler</tt> selection tab specify a target: <tt>/feed</tt></p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_rule_regex.png" alt="Regex" title="Regex"/>
+</div>
+</div>
+<div class="para"><p>And voilà! A request of the form <a href="http://example.net/rss2">http://example.net/rss2</a> would be
+redirected to <a href="http://example.net/feed">http://example.net/feed</a></p></div>
+<div class="para"><p>Note that the <tt>Type</tt> of the <strong>Redirection</strong> is <tt>External</tt>. This means
+the server will instruct the requesting web client to fetch the
+redirected URL, which means the client will always know what the
+final URL is. This also means the redirection can be done to servers
+other than your own. If it were internal, the redirection would be
+invisible (not showing the target  URL), but it would be limited to
+the same <tt>virtual server</tt>.</p></div>
+<div class="para"><p>A much more general redirection could be one using these values:</p></div>
+<div class="vlist"><dl>
+<dt>
+<strong>Regular Expression</strong>
+</dt>
+<dd>
+<p>
+  <tt>^/(.*)$</tt>
+</p>
+</dd>
+<dt>
+<strong>Substitution</strong>
+</dt>
+<dd>
+<p>
+  <a href="http://www.example.com/example.net/$1">http://www.example.com/example.net/$1</a>
+</p>
+</dd>
+</dl></div>
+<div class="para"><p>Note that this rule would have to be external since <tt>example.com</tt> is
+not among the domains managed by our configuration.</p></div>
+<div class="para"><p>This would redirect every petition to a site hosted under
+<tt>http://example.com/example.net</tt>. For instance, the request for
+<tt>http://example.net/image.jpg</tt> would return
+<tt>http://example.com/example.net/image.jpg</tt>.</p></div>
+<div class="para"><p>If you need more details, Check out the documentation for the
+<a href="modules_handlers_redir.html">redirection</a> handler.</p></div>
+</dd>
+</dl></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

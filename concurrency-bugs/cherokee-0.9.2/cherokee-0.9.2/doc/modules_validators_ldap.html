@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_modules_html_modules_a_8594_a_href_modules_validators_html_validators_a"><a href="index.html">Index</a> &#8594; <a href="modules.html">Modules</a> &#8594; <a href="modules_validators.html">Validators</a></h2>
+<div class="sectionbody">
+<h3 id="_validator_ldap">Validator: LDAP</h3><div style="clear:left"></div>
+<div class="para"><p>The LDAP validator allows you to authenticate a user using the
+Lightweight Directory Access Protocol v3.</p></div>
+<h4 id="_parameters">Parameters</h4>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="168" />
+<col width="631" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameter       
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    <em>server</em>      
+    </td>
+    <td align="left">
+    Name of the host providing the LDAP service.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>port</em>        
+    </td>
+    <td align="left">
+    Optional. Port number of the LDAP service.                         Default: <em>389</em>.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>binddn</em>      
+    </td>
+    <td align="left">
+    Optional. Bind Distinguished Name (<tt>user</tt>). If none                         is provided and anonymous bind will be attempted.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>bindpw</em>      
+    </td>
+    <td align="left">
+    Bind Password (<tt>password</tt>).
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>basedn</em>      
+    </td>
+    <td align="left">
+    Base Distinguished Name.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>filter</em>      
+    </td>
+    <td align="left">
+    A filter that defines the conditions that must be                          fulfilled in order for the search to match a given                         entry.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>tls</em>         
+    </td>
+    <td align="left">
+    Optional. Enable the use of TLS based integrity.                         Defaults to <em>0</em>.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>ca_file</em>     
+    </td>
+    <td align="left">
+    Optional. It's the CA filename. Must be provided                          if TLS is enabled.
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<h4 id="_compatibility">Compatibility</h4>
+<div class="para"><p>This validator is compatible with the <strong>basic</strong> scheme.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

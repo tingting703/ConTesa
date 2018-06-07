@@ -1,0 +1,21 @@
+#! /bin/sh
+#
+# Created by configure
+
+CC="/home/tyu/Documents/llvm/build/bin/clang"; export CC
+CFLAGS="-O4"; export CFLAGS
+"/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/srclib/apr/configure" \
+"--prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed" \
+"--with-included-apr" \
+"CC=/home/tyu/Documents/llvm/build/bin/clang" \
+"CFLAGS=-O4" \
+"--cache-file=/dev/null" \
+"--srcdir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/srclib/apr" \
+"--prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed" \
+"--exec-prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed" \
+"--libdir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed/lib" \
+"--includedir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed/include" \
+"--bindir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed/bin" \
+"--datadir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed" \
+"--with-installbuilddir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed/build" \
+"$@"

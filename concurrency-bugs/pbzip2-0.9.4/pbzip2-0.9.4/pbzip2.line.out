@@ -1,0 +1,278 @@
+_Z19producer_decompressilP5queue
+	  %call4 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %10) nounwind, !dbg !1456
+	  %call7 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %14) nounwind, !dbg !1459
+	pbzip2.cpp 297		pbzip2.cpp 301	8
+
+
+	  %call4 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %10) nounwind, !dbg !1456
+	  %call46 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %36) nounwind, !dbg !1483
+	pbzip2.cpp 297		pbzip2.cpp 345	81
+
+
+	  %call4 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %10) nounwind, !dbg !1456
+	  %call129 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %69) nounwind, !dbg !1512
+	pbzip2.cpp 297		pbzip2.cpp 390	218
+
+
+	  %call4 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %10) nounwind, !dbg !1456
+	  %call209 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %110) nounwind, !dbg !1549
+	pbzip2.cpp 297		pbzip2.cpp 450	341
+
+
+	  %call4 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %10) nounwind, !dbg !1456
+	  %call228 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %121) nounwind, !dbg !1562
+	pbzip2.cpp 297		pbzip2.cpp 471	373
+
+
+	  %call4 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %10) nounwind, !dbg !1456
+	  %call243 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %128) nounwind, !dbg !1571
+	pbzip2.cpp 297		pbzip2.cpp 481	394
+
+
+	  %call4 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %10) nounwind, !dbg !1456
+	  %call258 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %136) nounwind, !dbg !1581
+	pbzip2.cpp 297		pbzip2.cpp 492	419
+
+
+	  %call42 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %33) nounwind, !dbg !1480
+	  %call46 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %36) nounwind, !dbg !1483
+	pbzip2.cpp 342		pbzip2.cpp 345	11
+
+
+	  %call42 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %33) nounwind, !dbg !1480
+	  %call129 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %69) nounwind, !dbg !1512
+	pbzip2.cpp 342		pbzip2.cpp 390	148
+
+
+	  %call42 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %33) nounwind, !dbg !1480
+	  %call209 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %110) nounwind, !dbg !1549
+	pbzip2.cpp 342		pbzip2.cpp 450	271
+
+
+	  %call42 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %33) nounwind, !dbg !1480
+	  %call228 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %121) nounwind, !dbg !1562
+	pbzip2.cpp 342		pbzip2.cpp 471	303
+
+
+	  %call42 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %33) nounwind, !dbg !1480
+	  %call243 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %128) nounwind, !dbg !1571
+	pbzip2.cpp 342		pbzip2.cpp 481	324
+
+
+	  %call42 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %33) nounwind, !dbg !1480
+	  %call258 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %136) nounwind, !dbg !1581
+	pbzip2.cpp 342		pbzip2.cpp 492	349
+
+
+	  %call122 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %65) nounwind, !dbg !1508
+	  %call129 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %69) nounwind, !dbg !1512
+	pbzip2.cpp 386		pbzip2.cpp 390	13
+
+
+	  %call122 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %65) nounwind, !dbg !1508
+	  %call209 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %110) nounwind, !dbg !1549
+	pbzip2.cpp 386		pbzip2.cpp 450	136
+
+
+	  %call122 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %65) nounwind, !dbg !1508
+	  %call228 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %121) nounwind, !dbg !1562
+	pbzip2.cpp 386		pbzip2.cpp 471	168
+
+
+	  %call122 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %65) nounwind, !dbg !1508
+	  %call243 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %128) nounwind, !dbg !1571
+	pbzip2.cpp 386		pbzip2.cpp 481	189
+
+
+	  %call122 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %65) nounwind, !dbg !1508
+	  %call258 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %136) nounwind, !dbg !1581
+	pbzip2.cpp 386		pbzip2.cpp 492	214
+
+
+	  %call206 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %106) nounwind, !dbg !1546
+	  %call209 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %110) nounwind, !dbg !1549
+	pbzip2.cpp 446		pbzip2.cpp 450	8
+
+
+	  %call206 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %106) nounwind, !dbg !1546
+	  %call228 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %121) nounwind, !dbg !1562
+	pbzip2.cpp 446		pbzip2.cpp 471	40
+
+
+	  %call206 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %106) nounwind, !dbg !1546
+	  %call243 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %128) nounwind, !dbg !1571
+	pbzip2.cpp 446		pbzip2.cpp 481	61
+
+
+	  %call206 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %106) nounwind, !dbg !1546
+	  %call258 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %136) nounwind, !dbg !1581
+	pbzip2.cpp 446		pbzip2.cpp 492	86
+
+
+	  %call221 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %118) nounwind, !dbg !1558
+	  %call228 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %121) nounwind, !dbg !1562
+	pbzip2.cpp 468		pbzip2.cpp 471	11
+
+
+	  %call221 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %118) nounwind, !dbg !1558
+	  %call243 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %128) nounwind, !dbg !1571
+	pbzip2.cpp 468		pbzip2.cpp 481	32
+
+
+	  %call221 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %118) nounwind, !dbg !1558
+	  %call258 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %136) nounwind, !dbg !1581
+	pbzip2.cpp 468		pbzip2.cpp 492	57
+
+
+	  %call236 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %125) nounwind, !dbg !1568
+	  %call243 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %128) nounwind, !dbg !1571
+	pbzip2.cpp 478		pbzip2.cpp 481	11
+
+
+	  %call236 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %125) nounwind, !dbg !1568
+	  %call258 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %136) nounwind, !dbg !1581
+	pbzip2.cpp 478		pbzip2.cpp 492	36
+
+
+	  %call251 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %133) nounwind, !dbg !1578
+	  %call258 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %136) nounwind, !dbg !1581
+	pbzip2.cpp 489		pbzip2.cpp 492	11
+
+
+	  %call262 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %137) nounwind, !dbg !1584
+	  %call264 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %138) nounwind, !dbg !1586
+	pbzip2.cpp 498		pbzip2.cpp 500	3
+
+
+	  %call265 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %140) nounwind, !dbg !1587
+	  %call275 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %152) nounwind, !dbg !1593
+	pbzip2.cpp 503		pbzip2.cpp 515	24
+
+_Z19consumer_decompressPv
+	  %call = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %3) nounwind, !dbg !1454
+	  %call2 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %8) nounwind, !dbg !1459
+	pbzip2.cpp 553		pbzip2.cpp 561	13
+
+
+	  %call = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %3) nounwind, !dbg !1454
+	  %call14 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %20) nounwind, !dbg !1473
+	pbzip2.cpp 553		pbzip2.cpp 597	51
+
+
+	  %call16 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %23) nounwind, !dbg !1476
+	  %call18 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %26) nounwind, !dbg !1478
+	pbzip2.cpp 604		pbzip2.cpp 607	6
+
+
+	  %call16 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %23) nounwind, !dbg !1476
+	  %call33 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %40) nounwind, !dbg !1492
+	pbzip2.cpp 604		pbzip2.cpp 631	44
+
+
+	  %call16 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %23) nounwind, !dbg !1476
+	  %call56 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %60) nounwind, !dbg !1510
+	pbzip2.cpp 604		pbzip2.cpp 667	97
+
+
+	  %call27 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %34) nounwind, !dbg !1485
+	  %call33 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %40) nounwind, !dbg !1492
+	pbzip2.cpp 623		pbzip2.cpp 631	19
+
+
+	  %call27 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %34) nounwind, !dbg !1485
+	  %call56 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %60) nounwind, !dbg !1510
+	pbzip2.cpp 623		pbzip2.cpp 667	72
+
+
+	  %call45 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %51) nounwind, !dbg !1501
+	  %call49 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %56) nounwind, !dbg !1504
+	pbzip2.cpp 652		pbzip2.cpp 655	14
+
+
+	  %call52 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %58) nounwind, !dbg !1506
+	  %call56 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %60) nounwind, !dbg !1510
+	pbzip2.cpp 664		pbzip2.cpp 667	8
+
+_Z10fileWriterPv
+	  %call35 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %25) nounwind, !dbg !1444
+	  %call45 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %30) nounwind, !dbg !1447
+	pbzip2.cpp 727		pbzip2.cpp 730	19
+
+
+	  %call35 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %25) nounwind, !dbg !1444
+	  %call60 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %36) nounwind, !dbg !1452
+	pbzip2.cpp 727		pbzip2.cpp 737	42
+
+
+	  %call47 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %31) nounwind, !dbg !1449
+	  %call60 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %36) nounwind, !dbg !1452
+	pbzip2.cpp 734		pbzip2.cpp 737	19
+
+_Z8produceriliP5queue
+	  %call = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %6) nounwind, !dbg !1431
+	  %call4 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %10) nounwind, !dbg !1434
+	pbzip2.cpp 786		pbzip2.cpp 790	8
+
+
+	  %call = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %6) nounwind, !dbg !1431
+	  %call18 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %21) nounwind, !dbg !1447
+	pbzip2.cpp 786		pbzip2.cpp 810	40
+
+
+	  %call = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %6) nounwind, !dbg !1431
+	  %call31 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %28) nounwind, !dbg !1456
+	pbzip2.cpp 786		pbzip2.cpp 820	61
+
+
+	  %call14 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %18) nounwind, !dbg !1443
+	  %call18 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %21) nounwind, !dbg !1447
+	pbzip2.cpp 807		pbzip2.cpp 810	11
+
+
+	  %call14 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %18) nounwind, !dbg !1443
+	  %call31 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %28) nounwind, !dbg !1456
+	pbzip2.cpp 807		pbzip2.cpp 820	32
+
+
+	  %call24 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %25) nounwind, !dbg !1453
+	  %call31 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %28) nounwind, !dbg !1456
+	pbzip2.cpp 817		pbzip2.cpp 820	11
+
+
+	  %call40 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %35) nounwind, !dbg !1462
+	  %call51 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %50) nounwind, !dbg !1470
+	pbzip2.cpp 836		pbzip2.cpp 851	32
+
+_Z8consumerPv
+	  %call = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %3) nounwind, !dbg !1454
+	  %call2 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %8) nounwind, !dbg !1459
+	pbzip2.cpp 889		pbzip2.cpp 897	13
+
+
+	  %call = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %3) nounwind, !dbg !1454
+	  %call14 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %20) nounwind, !dbg !1473
+	pbzip2.cpp 889		pbzip2.cpp 933	51
+
+
+	  %call23 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %27) nounwind, !dbg !1478
+	  %call25 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %30) nounwind, !dbg !1480
+	pbzip2.cpp 942		pbzip2.cpp 945	6
+
+
+	  %call23 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %27) nounwind, !dbg !1478
+	  %call44 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %50) nounwind, !dbg !1497
+	pbzip2.cpp 942		pbzip2.cpp 974	56
+
+
+	  %call35 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %41) nounwind, !dbg !1488
+	  %call40 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %46) nounwind, !dbg !1491
+	pbzip2.cpp 964		pbzip2.cpp 967	14
+
+
+	  %call43 = call i32 @pthread_mutex_lock(%union.pthread_mutex_t* %48) nounwind, !dbg !1493
+	  %call44 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* %50) nounwind, !dbg !1497
+	pbzip2.cpp 971		pbzip2.cpp 974	8
+
+Printing analysis 'Basic Alias Analysis (stateless AA impl)':
+Pass::print not implemented for pass: 'Basic Alias Analysis (stateless AA impl)'!
+Printing analysis 'mutate pairs of calls to pthread_lock and unlock':

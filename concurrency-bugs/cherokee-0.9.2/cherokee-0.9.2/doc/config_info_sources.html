@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_config_html_configuration_a"><a href="index.html">Index</a> &#8594; <a href="config.html">Configuration</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_information_sources">Information Sources</h2>
+<div class="sectionbody">
+<div class="para"><p>Every information source to be used by the web server is configured
+only once in this section. After that, any virtual server will be able
+to use as many as desired without having to set up the same thing over
+and over again for every one of the virtual servers.</p></div>
+<div class="para"><p>There are two possible settings as <strong>information sources</strong>:</p></div>
+<div class="olist"><ol>
+<li>
+<p>
+<strong>Remote</strong>: Cherokee will simply dispatch the request to the specified
+  host. As many hosts as needed can be added, and Cherokee will simply
+  apply the balancing strategy to which the information source is
+  asinged among them. If for any reason the requests made to these
+  hosts could not be performed, the processes would simply fail.
+</p>
+</li>
+<li>
+<p>
+<strong>Local</strong>: As before, many hosts can be specified (despite the name,
+  the selection is not limited to the localhost). This works the same
+  way as the previous option. But in this case, if a request cannot be
+  responded then instead of failing directly a specified command would
+  be launched before reconnecting to try again. The most common use of
+  this would be launching the service that should handle the request,
+  but it is a flexible mechanism that in theory could allow you to
+  reroute the information to allow you to serve SSH sessions via your
+  webserver or any other neat tricks you can think of.
+</p>
+</li>
+</ol></div>
+<div class="para"><p>Note that because of Cherokee's flexibility and modularity, sometimes
+and deppending of the situation one or the other setting might not
+make much sense. In such ocasions <tt>cherokee-admin</tt> will simply hide
+whatever options do not apply.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_info_sources.png" alt="Info Sources" title="Info Sources"/>
+</div>
+</div>
+<h3 id="_unix_sockets">Unix Sockets</h3><div style="clear:left"></div>
+<div class="para"><p>Note that information sources can be adressed by host:port or directly
+through Unix sockets. You only have to specify a full path to the
+socket instead of the <tt>host:port</tt>.</p></div>
+<div class="para"><p>For instance an entry such as <tt>/var/tmp/socket-tmp.1</tt> should get
+everything to simply work it that was the correct path.</p></div>
+<h3 id="_further_insight">Further insight</h3><div style="clear:left"></div>
+<div class="para"><p>This is the list of currently supported balancing strategies:</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+<a href="modules_balancers_round_robin.html">Round Robin</a>
+</p>
+</li>
+</ul></div>
+<div class="para"><p>And these are the handlers that use balancing:</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+<a href="modules_handlers_fcgi.html">FastCGI</a>
+</p>
+</li>
+<li>
+<p>
+<a href="modules_handlers_scgi.html">SCGI</a>
+</p>
+</li>
+<li>
+<p>
+<a href="modules_handlers_mirror.html">Generic balancer</a>
+</p>
+</li>
+<li>
+<p>
+<a href="modules_handlers_dbslayer.html">MySQL bridge</a>
+</p>
+</li>
+</ul></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

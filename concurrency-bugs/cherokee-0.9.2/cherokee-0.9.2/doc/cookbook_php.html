@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_cookbook_html_cookbook_a"><a href="index.html">Index</a> &#8594; <a href="cookbook.html">Cookbook</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_cookbook_setting_up_php">Cookbook: Setting up PHP</h2>
+<div class="sectionbody">
+<div class="para"><p>There is not much to learn to configure PHP with Cherokee.
+The default configuration (the one created by <tt>cherokee-admin</tt> from
+scratch when there is no <tt>cherokee.conf</tt> present) already supports
+PHP.</p></div>
+<div class="para"><p>This example shows a typical usage of FastCGI. It only uses one
+<a href="config_info_sources.html">information source</a> nicknamed <tt>php</tt> in
+this case. This connects to a FastCGI server located in localhost in
+port 1234. If no server is running, the webserver will run the FastCGI
+server by issuing the command defined as the <strong>Interpreter</strong>
+sub-parameter:</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_handler_fastcgi1.png" alt="Fastcgi" title="Fastcgi"/>
+</div>
+</div>
+<div class="para"><p>This other example shows a typical usage of multiple FastCGI
+servers. It connects to FastCGI servers in several locations. If no
+server is running in the local computer, the webserver will run the
+FastCGI server by issuing the specified command. Note that for <strong>remote</strong>
+FastCGI servers, you are responsible of running the FastCGI services
+there manually:</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_handler_fastcgi2.png" alt="Fastcgi" title="Fastcgi"/>
+</div>
+</div>
+<div class="para"><p>The <strong>PHP_FCGI_CHILDREN</strong> environment variable is mandatory for PHP
+FastCGI servers.  It defines how much children should serve the
+requests coming from the webserver.</p></div>
+<div class="para"><p>If you define <strong>PHP_FCGI_MAX_REQUESTS</strong>, the value must be negative if
+you do not want the PHP process to ever be restarted. If you leave it
+unset, PHP will take the default value (500), after which it will be
+restarted. It is generally a good idea to let PHP be restarted to free
+up resources and possible memory leaks.</p></div>
+<div class="para"><p>Note that only FastCGI-enabled binaries of PHP will work with the
+FastCGI handler. Many prepackaged versions already enable this by
+default. If yours does not, you will need to build a suitable
+binary. You can check this with the <tt>-v</tt> parameter:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ php-cgi -v
+PHP 5.2.5 (cgi-fcgi) (built: Apr 20 2008 17:11:05)
+Copyright (c) 1997-2007 The PHP Group
+Zend Engine v2.2.0, Copyright (c) 1998-2007 Zend Technologies</tt></pre>
+</div></div>
+<div class="para"><p>You cannot proceed unless the <strong>"cgi-fcgi"</strong> string is present.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

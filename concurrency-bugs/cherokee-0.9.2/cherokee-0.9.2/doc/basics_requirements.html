@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_basics_html_getting_started_a"><a href="index.html">Index</a> &#8594; <a href="basics.html">Getting started</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_requirements">Requirements</h2>
+<div class="sectionbody">
+<h3 id="_hardware">Hardware</h3><div style="clear:left"></div>
+<div class="para"><p>Cherokee is very light, completely modular and it can be tailored to
+your specific needs. As such, disk requirements will vary depending on
+the options selected for the building process. A static build for
+embedded devices can occupy as little as 200KB, give or take.</p></div>
+<div class="para"><p>In terms of processing power, it has been known to work with as
+little as 133Mhz ARM processors. It could very well work on something
+smaller, but we haven't really had the chance to try it out.</p></div>
+<h3 id="_software">Software</h3><div style="clear:left"></div>
+<div class="para"><p>Cherokee has no dependencies besides a standard libc. Everything else
+is optional. Obviously anything beyond mere static content serving
+must be available for Cherokee to correctly execute the task. This
+means you will need PHP if you want Cherokee to serve PHP dynamic
+content, MySQL or LDAP development libraries if you want built-in
+support for these as authentication mechanisms for protected content
+and so on.</p></div>
+<div class="para"><p>If you intend to build Cherokee from source however, you will need
+several tools and libraries.</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+Building tools: Cherokee is built on top of the autoconf and
+  automake tools, hence your systems has to have some basic system
+  programs like an sh shell, make and an ANSI C compiler. We have
+  compiled Cherokee in various platforms with different compilers, so
+  it shouldn't be a problem.
+</p>
+</li>
+<li>
+<p>
+Python: Cherokee has an administrative web interface written in
+  Python, so if you intend to use cherokee-admin you will need this.
+  For disk space constrained environments this won't be an issue
+  since you would probably want to make a minimal install in your
+  destination host, preconfigured elsewhere. This programming language
+  is also used to generate the documentation, and Cherokee includes a
+  number of Quality Assurance tests written in it as well. If you are
+  planning to contribute code into the project, or you just want to
+  test everything is working in the server, you will need a Python
+  interpreter installed on your system.
+</p>
+</li>
+<li>
+<p>
+If you are building Cherokee in a non-POSIX compliant platform such
+  as Windows, you will need a POSIX threads implementation. You can
+  disable the usage at compilation time and do without this, though,
+  but this has a dramatic impact in scalability.
+</p>
+</li>
+<li>
+<p>
+If you want to make a build that serves secure content, you will
+  need TLS libraries. Cherokee supports two different SSL/TLS
+  libraries: OpenSSL and GNUTLS. You need to have the development
+  files of one of these in order to build a package that suits your
+  needs. Additionally, if you are going to use GNUTLS, you will need
+  <a href="http://pkg-config.freedesktop.org/wiki/">pkg-config</a> to
+  correctly detect it during the <tt>configure</tt> stage.
+</p>
+</li>
+</ul></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

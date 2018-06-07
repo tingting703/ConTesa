@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_bundle_html_cherokee_bundle_a"><a href="index.html">Index</a> &#8594; <a href="bundle.html">Cherokee Bundle</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_cherokee_admin">cherokee-admin</h2>
+<div class="sectionbody">
+<div class="para"><p>This is the administration interface that allows for hassle-free,
+simple and easy configuration of the Cherokee web server. It is the
+only administration mechanism that should be to such task and is in
+fact the only recommended option.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_index.png" alt="Cherokee Admin interface" title="Cherokee Admin interface"/>
+</div>
+</div>
+<div class="para"><p>If you want to access the administration interface from the same
+computer that you installed cherokee on, simply start the
+administration interface by running:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>cherokee-admin</tt></pre>
+</div></div>
+<div class="para"><p>Then redirect your web browser to 127.0.0.1:9090, which is the default
+address and port for the administration interface.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_launch.png" alt="Cherokee admin interface" title="Cherokee admin interface"/>
+</div>
+</div>
+<div class="para"><p>If you want to access the administration interface from another
+computer, the easiest solution is to bind the cherokee administration
+interface to all network interfaces:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>cherokee-admin -b</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">By starting cherokee-admin listening on all interfaces,
+everyone that can access the computer can alter your cherokee
+configuration. Don't use this in a production environment! It is much
+better to use <em>ssh -L</em> in these cases.</td>
+</tr></table>
+</div>
+<div class="para"><p>Instead of binding it to every interface, we encourage you to use an
+SSH tunnel. This is the recommended way. In order to do so you must
+issue the following command:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>ssh -L 9090:localhost:9090 remote_IP</tt></pre>
+</div></div>
+<div class="para"><p>After that you can access the remote interface through
+<a href="http://localhost:9090">http://localhost:9090</a> and every request will be forwarded to the
+remote IP running cherokee-admin.</p></div>
+<div class="para"><p>Of course these options can be combined to your heart's contempt.</p></div>
+<div class="para"><div class="title">Example:</div><p>Make cherokee use a different configuration file, listen on port 9091
+and grab the administration interface application from a different
+path:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>cherokee-admin -b -p 9091 -C /etc/cherokee/cherokee2.conf \
+                 -d /path/to/svn/trunk/cherokee-admin/</tt></pre>
+</div></div>
+<div class="para"><p>This is the full information provided by the manpage.</p></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="vlist"><dl>
+<dt>
+<strong>NAME</strong>
+</dt>
+<dd>
+<p>
+       <tt>cherokee-admin</tt> - Runs Cherokee’s administrative interface
+</p>
+</dd>
+<dt>
+<strong>SYNOPSIS</strong>
+</dt>
+<dd>
+<p>
+       <tt>cherokee-admin</tt> [-d DIR] [-p PORT] [-C FILE] [-a]
+</p>
+</dd>
+<dt>
+<strong>DESCRIPTION</strong>
+</dt>
+<dd>
+<p>
+       <tt>cherokee-admin</tt> runs the server for the administrative interface used to
+       configure Cherokee. The interface itself will be available via your Web
+       browser.
+</p>
+</dd>
+<dt>
+<strong>OPTIONS</strong>
+</dt>
+<dd>
+<p>
+       <tt>cherokee-admin</tt> accepts the following options:
+</p>
+<div class="vlist"><dl>
+<dt>
+-h, &#8212;help
+</dt>
+<dd>
+<p>
+               Shows brief usage information
+</p>
+</dd>
+<dt>
+-V, &#8212;version
+</dt>
+<dd>
+<p>
+               Show version and exit
+</p>
+</dd>
+<dt>
+-x, &#8212;debug
+</dt>
+<dd>
+<p>
+               Print the backend errors to the terminal where it is executing.
+               If omited, this debug information is lost.
+</p>
+</dd>
+<dt>
+-b, &#8212;bind[=IP]
+</dt>
+<dd>
+<p>
+               By  default <tt>cherokee-admin</tt> binds only to 127.0.0.1 (localhost),
+               which means you can only connect to it from  the  same  system.
+               With this parameter you can specify the network address
+               to listen to. If no IP is provided, it will bind to all
+               interfaces.
+</p>
+</dd>
+<dt>
+-C, &#8212;target=PATH
+</dt>
+<dd>
+<p>
+               Requests  a  configuration  file  different  than  the  default
+               /etc/cherokee/cherokee.conf to be used
+</p>
+</dd>
+<dt>
+-d, &#8212;appdir=DIR
+</dt>
+<dd>
+<p>
+               Uses a custom admin-interface path
+</p>
+</dd>
+<dt>
+-p, &#8212;port=NUM
+</dt>
+<dd>
+<p>
+               Specifies an alternative port. By default, 9090.
+</p>
+</dd>
+</dl></div>
+</dd>
+</dl></div>
+</div></div>
+<div class="para"><p>Refer to the <a href="config_quickstart.html">configuration section</a> for
+more in-depth explanations of the usage of the interface as a
+configuration tool.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_cookbook_html_cookbook_a"><a href="index.html">Index</a> &#8594; <a href="cookbook.html">Cookbook</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_cookbook_setting_up_django">Cookbook: Setting up Django</h2>
+<div class="sectionbody">
+<div class="para"><p>Django is a fantastic high-level Python Web framework that can run
+nicely with Cherokee and either the
+<a href="modules_handlers_scgi.html">SCGI</a> or
+<a href="modules_handlers_fcgi.html">FastCGI</a> or handlers.</p></div>
+<div class="para"><p>To properly set up Cherokee to use Django you will need a working
+Django framework, which is not difficult at all to get ready. The
+details vary from system to system. You can refer to the official
+project's documentation for more information on
+<a href="http://www.djangoproject.com/documentation/install">how to install
+Django</a>.</p></div>
+<div class="para"><p>On Debian based systems this will be enough:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt># apt-get install python-django python-flup</tt></pre>
+</div></div>
+<div class="para"><p>You will need Flup because it implements the standard interface
+between Python Web applications and Web servers, so you will be using
+it to run your web application either as FastCGI or SCGI.</p></div>
+<div class="para"><p>Once you are done with that, you must deploy your Django project:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ cd /var/www
+$ django-admin startproject example</tt></pre>
+</div></div>
+<div class="para"><p>This will create the basic structure into a new directory called
+<tt>example</tt>. Now you are ready to configure Cherokee. You only need to
+know how to spawn the FastCGI or SCGI, which is done with a script
+provided by your project called <tt>manage.py</tt>.</p></div>
+<div class="para"><p>It can be run on a TCP port or on a Unix socket. In our example we
+will be launching it as threaded server on a TCP port with SCGI
+protocol. This is acomplished with the following command, which is
+what we will have to set up in <tt>cherokee-admin</tt>.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>./manage.py runfcgi method=threaded host=127.0.0.1 port=3033 protocol=scgi</tt></pre>
+</div></div>
+<div class="para"><p>The process is fairly simple. Set up a new rule for this new path and
+manage it with the SCGI handler. If you wanted to use the FastCGI
+handler instead you would only have to omit the last parameter and
+FastCGI would be used by default. The configuration of the handler is
+exactly the same for SCGI and FastCGI.</p></div>
+<div class="para"><p>Once you have created the new rule for your <tt>/var/www/example</tt>
+directory, choose the desired handler and use the following
+configuration.</p></div>
+<div class="para"><div class="title">Common CGI options</div><p>Under <tt>Common CGI options</tt> make sure to check the <tt>Error handler</tt> box and
+uncheck <tt>Check file</tt>. This is to prevent possible errors with the
+<tt>INFO_PATH</tt> generation that can happen when an application, in this
+case <em>Django</em>, manages the whole subtree. This is mentioned in the
+<a href="modules_handlers_cgi.html">Common CGI</a> section of the
+documentation.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/cookbook_django_common.png" alt="Common CGI options" title="Common CGI options"/>
+</div>
+</div>
+<div class="para"><div class="title">SCGI specific</div><p>Under <tt>SCGI specific</tt> make sure to add the hosts providing the
+service. This is done by adding one or more information sources.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/cookbook_django_infosources.png" alt="Info Sources" title="Info Sources"/>
+</div>
+</div>
+<div class="para"><p>Note that you will have to manually launch the <tt>spawner</tt> if
+you use a <tt>Remote host</tt> as <tt>Information source</tt> instead of a <tt>Local
+interpreter</tt>.</p></div>
+<div class="para"><p>You will simply have to add as many sources as needed, for instance
+our example uses one nicknamed <tt>django1</tt>, created as <strong>local
+interpreter</strong> with these parameters on port 3033.</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="157" />
+<col width="642" />
+<thead>
+  <tr>
+    <th align="left">
+    Host           
+    </th>
+    <th align="left">
+    Interpreter
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    localhost:3033 
+    </td>
+    <td align="left">
+    <tt>/var/www/example/manage.py runfcgi method=threaded </tt>                  <tt>host=127.0.0.1 port=3033 protocol=scgi</tt>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>You can set up as many hosts as desired and Cherokee will balance the
+load among them.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

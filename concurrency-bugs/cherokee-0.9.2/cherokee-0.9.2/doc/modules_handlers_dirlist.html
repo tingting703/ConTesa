@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_modules_html_modules_a_8594_a_href_modules_handlers_html_handlers_a"><a href="index.html">Index</a> &#8594; <a href="modules.html">Modules</a> &#8594; <a href="modules_handlers.html">Handlers</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_handler_directory_listing">Handler: Directory Listing</h2>
+<div class="sectionbody">
+<div class="para"><p>The <strong>Only Listing</strong> handler builds a list of directories and files
+within the requested directory, but <strong>does not allow you to download
+its contents</strong>. Refer to <a href="modules_handlers_common.html">List &amp;
+Send</a> for the opposite behaviour.</p></div>
+<h3 id="_parameters_listing">Parameters: Listing</h3><div style="clear:left"></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="170" />
+<col width="100" />
+<col width="530" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameters       
+    </th>
+    <th align="left">
+    Type    
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    <tt>`size</tt>`         
+    </td>
+    <td align="left">
+    boolean 
+    </td>
+    <td align="left">
+    Optional. Display the size of files in the                                   listings. Default: <tt>`Enabled</tt>`.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>`date</tt>`         
+    </td>
+    <td align="left">
+    boolean 
+    </td>
+    <td align="left">
+    Optional. Display the last modification date of                              the files and directories in the listings.                                   Default: <tt>`Enabled</tt>`.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>`user</tt>`         
+    </td>
+    <td align="left">
+    boolean 
+    </td>
+    <td align="left">
+    Optional. Display the owner of the files and directories                              in the listings. Default: <tt>`Disabled</tt>`.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>`group</tt>`        
+    </td>
+    <td align="left">
+    boolean 
+    </td>
+    <td align="left">
+    Optional. Display the group ownership of the files and                               directories in the listings. Default <tt>`Disabled</tt>`.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>`symlinks</tt>`     
+    </td>
+    <td align="left">
+    boolean 
+    </td>
+    <td align="left">
+    Optional. Display symbolic links. Default <tt>`Enabled</tt>`.
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<h3 id="_parameters_theming">Parameters: Theming</h3><div style="clear:left"></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="170" />
+<col width="100" />
+<col width="530" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameters       
+    </th>
+    <th align="left">
+    Type    
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    <tt>`theme</tt>`        
+    </td>
+    <td align="left">
+    string  
+    </td>
+    <td align="left">
+    Optional. The theme to use when displaying the                               directory listings. Default: <tt>`default</tt>`.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>`icon_dir</tt>`     
+    </td>
+    <td align="left">
+    string  
+    </td>
+    <td align="left">
+    Optional: Alternative path to a new icon set.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>`notice_files</tt>` 
+    </td>
+    <td align="left">
+    string  
+    </td>
+    <td align="left">
+    Optional: List of notice files to be inserted.
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>It is possible to change the default theme used when displaying the directory
+listings.</p></div>
+<div class="vlist"><dl>
+<dt>
+It is also possible to create a new one
+</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><tt>   $ ls /usr/share/cherokee/themes/firefox3/
+   entry.html  footer.html  header.html  theme.css</tt></pre>
+</div></div>
+<div class="para"><p>Simply create a new directory in the above mentioned path containing
+the listed files and  you'll be able to select it in <tt>cherokee-admin</tt>.</p></div>
+</dd>
+</dl></div>
+<h3 id="_examples">Examples</h3><div style="clear:left"></div>
+<div class="para"><p>This configuration</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_handler_onlylisting.png" alt="Only listing configuration" title="Only listing configuration"/>
+</div>
+</div>
+<div class="para"><p>will return something like</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_handler_onlylisting_ex.png" alt="Only listing example" title="Only listing example"/>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

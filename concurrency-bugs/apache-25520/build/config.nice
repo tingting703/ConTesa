@@ -1,0 +1,11 @@
+#! /bin/sh
+#
+# Created by configure
+
+CC="/home/tyu/Documents/llvm/Release+Asserts/bin/clang"; export CC
+CFLAGS="-emit-llvm -flto -g"; export CFLAGS
+"../httpd-2.0.48/configure" \
+"--prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/build/installed" \
+"--enable-static-htpasswd" \
+"--disable-shared" \
+"$@"

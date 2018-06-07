@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_config_html_configuration_a"><a href="index.html">Index</a> &#8594; <a href="config.html">Configuration</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_general_configuration">General Configuration</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_general.png" alt="General" title="General"/>
+</div>
+</div>
+<h3 id="_networking">Networking</h3><div style="clear:left"></div>
+<h4 id="_binding">Binding:</h4>
+<div class="para"><p>When the server is initiated it opens a port and starts listening to
+incoming requests. By default this is port 80 and it will use all the
+network interfaces of the machine, which is usually the desired
+behavior. The <strong>Port TLS</strong> specifies the port to be used for secure
+connections.</p></div>
+<h4 id="_ipv6_support">IPv6 support</h4>
+<div class="para"><p>The IPv6 configuration key brings the possibility of activating or
+deactivating the IPv6 support at the server. If Cherokee has been
+compiled with IPv6 support (&#8212;with-ipv6), this configuration entry
+will be fully functional, otherwise it will be ignored.</p></div>
+<h4 id="_listen">Listen</h4>
+<div class="para"><p>This specifies the IP of the network interface to use. It can be left
+empty.</p></div>
+<h3 id="_basic_behavior">Basic Behavior</h3><div style="clear:left"></div>
+<h4 id="_timeout">Timeout</h4>
+<div class="para"><p>Sets the number of seconds that Cherokee will wait before closing the
+connection.</p></div>
+<h4 id="_server_tokens">Server Tokens</h4>
+<div class="para"><p>This specifies the string that Cherokee should use to identify
+itself.</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="400" />
+<col width="400" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameters               
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    Product                  
+    </td>
+    <td align="left">
+    Cherokee
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Minor                    
+    </td>
+    <td align="left">
+    Cherokee/0.9
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Minimal                  
+    </td>
+    <td align="left">
+    Cherokee/0.9.0
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    OS                       
+    </td>
+    <td align="left">
+    Cherokee/0.9.0 (UNIX)
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Full                     
+    </td>
+    <td align="left">
+    Cherokee/0.9.0 b1234 (UNIX)
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>By default, Cherokee will use <strong>Full</strong>.</p></div>
+<h3 id="_server_permissions">Server Permissions</h3><div style="clear:left"></div>
+<h4 id="_user_amp_group">User &amp; Group</h4>
+<div class="para"><p>The User directive configures which user the Cherokee daemon will
+normally run as. By default, Cherokee runs as root which is considered
+undesirable in all but the most trustful network configurations.</p></div>
+<div class="para"><p>The User directive used in conjunction with the Group directive
+instructs the daemon to switch to the specified user and group as
+quickly as possible after startup.</p></div>
+<div class="para"><p>There are two possible formats: using the user or group name, or using
+the system ID.</p></div>
+<h4 id="_chroot">Chroot</h4>
+<div class="para"><p>Cherokee can be jailed inside a directory. Note that this should not
+be used as the sole security measure.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

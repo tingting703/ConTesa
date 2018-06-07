@@ -1,0 +1,15 @@
+#! /bin/sh
+#
+# Created by configure
+
+"/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/srclib/apr-util/configure" \
+"--prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed" \
+"--cache-file=/dev/null" \
+"--srcdir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/srclib/apr-util" \
+"--with-apr=../apr" \
+"--prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed" \
+"--exec-prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed" \
+"--libdir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed/lib" \
+"--includedir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed/include" \
+"--bindir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed/bin" \
+"$@"

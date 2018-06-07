@@ -1,0 +1,277 @@
+Number of CSIDs 45635
+Number of CSes 17
+Number of counters (logical time) 1588301
+Total cost: 35298
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1363
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z14safe_cond_waitP14pthread_cond_tP15pthread_mutex_t	         224
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1412
+
+
+Total cost: 2259
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1363
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.h	_Z13disposeMemoryIcEvRPT_	         320
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z14safe_cond_waitP14pthread_cond_tP15pthread_mutex_t	         224
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1412
+
+
+Total cost: 1061
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1756
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1743
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1770
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19safe_cond_broadcastP14pthread_cond_t	         211
+
+
+Total cost: 726
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15outputBufferAddRK7outBuffPKc	        2907
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1535
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15outputBufferAddRK7outBuffPKc	        2949
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15outputBufferAddRK7outBuffPKc	        2941
+
+
+Total cost: 503
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         489
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1662
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         491
+
+
+Total cost: 257
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1670
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1704
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1693
+
+
+Total cost: 235
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1670
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20safe_cond_timed_waitP14pthread_cond_tP15pthread_mutex_tiPKc	         263
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20safe_cond_timed_waitP14pthread_cond_tP15pthread_mutex_tiPKc	         249
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1696
+
+
+Total cost: 230
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19syncGetProducerDonev	         465
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1653
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19syncGetProducerDonev	         467
+
+
+Total cost: 207
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15outputBufferAddRK7outBuffPKc	        2907
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1535
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15outputBufferAddRK7outBuffPKc	        2949
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z16safe_cond_signalP14pthread_cond_t	         197
+
+
+Total cost: 172
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         489
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z32consumerDecompressCheckInterruptPK7outBuff	        1311
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         491
+
+
+Total cost: 127
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetLastGoodBlockv	         604
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z32producerDecompressCheckInterruptiRP7outBuffi	        1161
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetLastGoodBlockv	         606
+
+
+Total cost: 114
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19producer_decompressilP5queue	        1234
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19producer_decompressilP5queue	        1263
+
+
+Total cost: 41
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetMinErrorBlockv	         614
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z32consumerDecompressCheckInterruptPK7outBuff	        1319
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetMinErrorBlockv	         616
+
+
+Total cost: 11
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         489
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1389
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         491
+
+
+Total cost: 1
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         489
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1382
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         491
+
+
+Total cost: 0
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         489
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z32producerDecompressCheckInterruptiRP7outBuffi	        1170
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         491
+
+
+Total cost: 0
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19syncGetProducerDonev	         465
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1382
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19syncGetProducerDonev	         467
+
+
+Total WT cost: 33522
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1363
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z14safe_cond_waitP14pthread_cond_tP15pthread_mutex_t	         224
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1412
+
+
+Total WT cost: 1508
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1363
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.h	_Z13disposeMemoryIcEvRPT_	         320
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z14safe_cond_waitP14pthread_cond_tP15pthread_mutex_t	         224
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1412
+
+
+Total WT cost: 1295
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetMinErrorBlockv	         614
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z32consumerDecompressCheckInterruptPK7outBuff	        1319
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetMinErrorBlockv	         616
+
+
+Total WT cost: 578
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19producer_decompressilP5queue	        1234
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19producer_decompressilP5queue	        1263
+
+
+Total WT cost: 468
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetLastGoodBlockv	         604
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z32producerDecompressCheckInterruptiRP7outBuffi	        1161
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetLastGoodBlockv	         606
+
+
+Total WT cost: 365
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         489
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1382
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         491
+
+
+Total WT cost: 328
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15outputBufferAddRK7outBuffPKc	        2907
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1535
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15outputBufferAddRK7outBuffPKc	        2949
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15outputBufferAddRK7outBuffPKc	        2941
+
+
+Total WT cost: 230
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19syncGetProducerDonev	         465
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1382
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19syncGetProducerDonev	         467
+
+
+Total WT cost: 196
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         489
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z32consumerDecompressCheckInterruptPK7outBuff	        1311
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         491
+
+
+Total WT cost: 194
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15outputBufferAddRK7outBuffPKc	        2907
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1535
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15outputBufferAddRK7outBuffPKc	        2949
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z16safe_cond_signalP14pthread_cond_t	         197
+
+
+Total WT cost: 172
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         489
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1662
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         491
+
+
+Total WT cost: 34
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1756
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1743
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1770
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19safe_cond_broadcastP14pthread_cond_t	         211
+
+
+Total WT cost: 29
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         489
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z32producerDecompressCheckInterruptiRP7outBuffi	        1170
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         491
+
+
+Total WT cost: 0
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         489
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	consumer_decompress	        1389
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20syncGetTerminateFlagv	         491
+
+
+Total WT cost: 0
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1670
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1704
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1693
+
+
+Total WT cost: 0
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1670
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20safe_cond_timed_waitP14pthread_cond_tP15pthread_mutex_tiPKc	         263
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z20safe_cond_timed_waitP14pthread_cond_tP15pthread_mutex_tiPKc	         249
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1696
+
+
+Total WT cost: 0
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z15safe_mutex_lockP15pthread_mutex_t	         170
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19syncGetProducerDonev	         465
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	fileWriter	        1653
+###/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z17safe_mutex_unlockP15pthread_mutex_t	         183
+/home/tyu/Documents/concurrency-bugs/pbzip2-1.1.12/pbzip2.cpp	_Z19syncGetProducerDonev	         467
+
+

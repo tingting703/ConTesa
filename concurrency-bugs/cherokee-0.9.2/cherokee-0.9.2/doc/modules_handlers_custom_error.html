@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_modules_html_modules_a_8594_a_href_modules_handlers_html_handlers_a"><a href="index.html">Index</a> &#8594; <a href="modules.html">Modules</a> &#8594; <a href="modules_handlers.html">Handlers</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_handler_http_error">Handler: HTTP Error</h2>
+<div class="sectionbody">
+<div class="para"><p>The <strong>HTTP Error</strong> (<tt>`custom_error</tt>` internally) handler is used to
+generate errors when certain rules are matched. For instance it can be
+used to deny access to specific files, such as those containing
+passwords.</p></div>
+<h3 id="_parameters">Parameters</h3><div style="clear:left"></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="150" />
+<col width="125" />
+<col width="525" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameters  
+    </th>
+    <th align="left">
+    Type    
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    <tt>error</tt>     
+    </td>
+    <td align="left">
+    number  
+    </td>
+    <td align="left">
+    HTTP error code return.
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>image::media/images/admin_custom_error.png</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table: Available errors in <tt>cherokee-admin</tt></caption>
+<col width="62" />
+<col width="737" />
+<thead>
+  <tr>
+    <th align="left">
+    Code 
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    400  
+    </td>
+    <td align="left">
+    Bad Request
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    403  
+    </td>
+    <td align="left">
+    Forbidden
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    404  
+    </td>
+    <td align="left">
+    Not Found
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    405  
+    </td>
+    <td align="left">
+    Method Not Allowed
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    413  
+    </td>
+    <td align="left">
+    Request Entity too large
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    414  
+    </td>
+    <td align="left">
+    Request-URI too long
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    416  
+    </td>
+    <td align="left">
+    Requested range not satisfiable
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    500  
+    </td>
+    <td align="left">
+    Internal Server Error
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    501  
+    </td>
+    <td align="left">
+    Not Implemented
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    502  
+    </td>
+    <td align="left">
+    Bad gateway
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    503  
+    </td>
+    <td align="left">
+    Service Unavailable
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    504  
+    </td>
+    <td align="left">
+    Gatewat Timeout
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    505  
+    </td>
+    <td align="left">
+    HTTP Version Not Supported
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

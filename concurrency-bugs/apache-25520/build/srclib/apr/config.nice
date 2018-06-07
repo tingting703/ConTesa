@@ -1,0 +1,23 @@
+#! /bin/sh
+#
+# Created by configure
+
+CC="/home/tyu/Documents/llvm/Release+Asserts/bin/clang"; export CC
+CFLAGS="-emit-llvm -flto -g"; export CFLAGS
+"/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/srclib/apr/configure" \
+"--prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/build/installed" \
+"--enable-static-htpasswd" \
+"--disable-shared" \
+"CC=/home/tyu/Documents/llvm/Release+Asserts/bin/clang" \
+"CFLAGS=-emit-llvm -flto -g" \
+"CPP=/home/tyu/Documents/llvm/Release+Asserts/bin/clang -E" \
+"--cache-file=/dev/null" \
+"--srcdir=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/srclib/apr" \
+"--prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/build/installed" \
+"--exec-prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/build/installed" \
+"--libdir=/home/tyu/Documents/concurrency-bugs/apache-25520/build/installed/lib" \
+"--includedir=/home/tyu/Documents/concurrency-bugs/apache-25520/build/installed/include" \
+"--bindir=/home/tyu/Documents/concurrency-bugs/apache-25520/build/installed/bin" \
+"--datadir=/home/tyu/Documents/concurrency-bugs/apache-25520/build/installed" \
+"--with-installbuilddir=/home/tyu/Documents/concurrency-bugs/apache-25520/build/installed/build" \
+"$@"

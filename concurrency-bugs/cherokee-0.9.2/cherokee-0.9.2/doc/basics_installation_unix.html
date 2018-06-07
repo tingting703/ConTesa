@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_basics_html_getting_started_a_8594_a_href_basics_installation_html_installation_a"><a href="index.html">Index</a> &#8594; <a href="basics.html">Getting started</a> &#8594; <a href="basics_installation.html">Installation</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_installation_on_unix">Installation on Unix</h2>
+<div class="sectionbody">
+<div class="para"><p>If you have a prepackaged version of Cherokee available in your
+Unix/Linux favorite variant, please use the provided installation
+mechanism of choice. This will provide you with automatic bootup
+scripts, consistency and dependency checks, and an easy upgrade path
+tailored to your system whenever a new package is available.</p></div>
+<div class="para"><p>If you do not find a prepackaged version that suits your needs, you
+can always download and compile your own.</p></div>
+<h3 id="_quickstart">Quickstart</h3><div style="clear:left"></div>
+<div class="olist"><ol>
+<li>
+<p>
+<a href="basics_download.html">Download</a> a fresh copy of Cherokee
+</p>
+</li>
+<li>
+<p>
+Configure the package for your system:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>./configure --localstatedir=/var     \
+            --prefix=/usr            \
+            --sysconfdir=/etc        \
+            --with-wwwroot=/var/www</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+Compile the package:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>make</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+Install the programs and any data files:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>make install</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+Start <a href="bundle_cherokee-admin.html">cherokee-admin</a>
+</p>
+</li>
+</ol></div>
+<h3 id="_advanced_parameters">Advanced parameters</h3><div style="clear:left"></div>
+<div class="para"><p>If you want to learn more about <em>configure</em> you can run <tt>./configure
+&#8212;help</tt>.</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="400" />
+<col width="400" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameter
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    <tt>&#8212;with-wwwroot=DIR</tt> 
+    </td>
+    <td align="left">
+    Specify the webserver root directory
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>&#8212;disable-epoll</tt>    
+    </td>
+    <td align="left">
+    Disable epoll() support
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>&#8212;disable-pthread</tt>  
+    </td>
+    <td align="left">
+    Disable threading support
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>&#8212;disable-readdir_r</tt>
+    </td>
+    <td align="left">
+    Disable readdir_r usage
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>&#8212;disable-ipv6</tt>     
+    </td>
+    <td align="left">
+    Disable IPv6 support
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>&#8212;disable-pam</tt>      
+    </td>
+    <td align="left">
+    Disable PAM support
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>&#8212;disable-tls</tt>      
+    </td>
+    <td align="left">
+    Disable TLS/SSL support
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>&#8212;enable-tls=</tt>      
+    </td>
+    <td align="left">
+    gnutls|openssl
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>&#8212;enable-trace</tt>     
+    </td>
+    <td align="left">
+    Allows debugging options
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <tt>&#8212;disable-admin</tt>    
+    </td>
+    <td align="left">
+    Skips cherokee-admin installation
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<h3 id="_autostart">Autostart</h3><div style="clear:left"></div>
+<div class="para"><p>If you need the cherokee webserver to start at boot (through init's
+runlevel) you can find a start/stop script in the contrib source
+directory:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>cp contrib/cherokee /etc/init.d/</tt></pre>
+</div></div>
+<div class="para"><p>Additionally, you need to create symlinks at the correct rc directory
+of the appropriate runlevel. This can be done in many ways and usually
+each distribution offers its own tools to do so.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

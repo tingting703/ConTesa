@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_modules_html_modules_a_8594_a_href_modules_validators_html_validators_a"><a href="index.html">Index</a> &#8594; <a href="modules.html">Modules</a> &#8594; <a href="modules_validators.html">Validators</a></h2>
+<div class="sectionbody">
+<h3 id="_validator_mysql">Validator: Mysql</h3><div style="clear:left"></div>
+<div class="para"><p>The MySQL validator allows you to authenticate a user against a MySQL database.</p></div>
+<h4 id="_parameters">Parameters</h4>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="400" />
+<col width="400" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameter                 
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    <em>host</em>                  
+    </td>
+    <td align="left">
+    Optional. The server that is running the                                  MySQL database server. Default: <em>localhost</em>.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>port</em>                  
+    </td>
+    <td align="left">
+    Optional. The port that MySQL is listening on.                             Default: <em>3306</em>.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>unix_socket</em>           
+    </td>
+    <td align="left">
+    Optional. A Unix socket.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>user</em>                  
+    </td>
+    <td align="left">
+    The MySQL user to authenticate as.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>passwd</em>                
+    </td>
+    <td align="left">
+    The MySQL user password to use.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>database</em>              
+    </td>
+    <td align="left">
+    Required. The MySQL database to select upon                                connection.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>query</em>                 
+    </td>
+    <td align="left">
+    Required. The query to execute to authenticate                             the HTTP user.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>use_md5_passwd</em>        
+    </td>
+    <td align="left">
+    Optional. The passwords in the database table                              are hashed with MD5.  Default: <em>0</em>.
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>against it.  Take a look at the following example:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    SELECT password FROM auth_users WHERE username = '${user}'</tt></pre>
+</div></div>
+<div class="para"><p>The query must return one row with one column as the password.  The name of the
+column does not matter.</p></div>
+<h4 id="_compatibility">Compatibility</h4>
+<div class="para"><p>This validator is compatible with both <strong>basic</strong> and <strong>digest</strong> schemes.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_modules_html_modules_a_8594_a_href_modules_handlers_html_handlers_a"><a href="index.html">Index</a> &#8594; <a href="modules.html">Modules</a> &#8594; <a href="modules_handlers.html">Handlers</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_handler_list_amp_send">Handler: List &amp; Send</h2>
+<div class="sectionbody">
+<div class="para"><p>The <strong>List &amp; Send</strong> (<tt>`common</tt>` internally) handler behavior depends
+on whether it replies a request for a directory or a file.</p></div>
+<div class="para"><p>In case a directory is requested, it will use the
+<a href="modules_handlers_dirlist.html">Listing Only</a> handler in order to
+list its contents. And, in case a file is request, it will use the
+<a href="modules_handlers_file.html">File Sending</a> handler.</p></div>
+<h3 id="_parameters">Parameters</h3><div style="clear:left"></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="150" />
+<col width="125" />
+<col width="525" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameters  
+    </th>
+    <th align="left">
+    Type    
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    <tt>PathInfo</tt>  
+    </td>
+    <td align="left">
+    boolean 
+    </td>
+    <td align="left">
+    Makes the handler to stop parsing the                         pathinfo string. Default: <tt>Disabled</tt>.
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>Besides, it inherits all the parameters from the
+<a href="modules_handlers_file.html">file/Static Content</a> and
+<a href="modules_handlers_dirlist.html">dirlist/Only listing</a> handlers.</p></div>
+<div class="vlist"><dl>
+<dt>
+This example shows the practical effect of <strong>pathinfo</strong>
+</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    $ echo "This is a test" &gt; /tmp/1/2/test
+    $ curl http://localhost:9999/1/2/test
+    This is a test
+    $ curl http://localhost:9999/1/2/test/this/is/pathinfo
+    This is a test
+    $ curl http://localhost:9999/1/2/test.no -D - | grep HTTP
+    HTTP/1.1 404 Not Found</tt></pre>
+</div></div>
+</dd>
+</dl></div>
+<h3 id="_examples">Examples</h3><div style="clear:left"></div>
+<div class="para"><p>This configuration</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_handler_dirlist.png" alt="Dirlist configuration" title="Dirlist configuration"/>
+</div>
+</div>
+<div class="para"><p>will return something like</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_handler_dirlist_ex.png" alt="Dirlist example" title="Dirlist example"/>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

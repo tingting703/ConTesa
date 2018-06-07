@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_modules_html_modules_a_8594_a_href_modules_handlers_html_handlers_a"><a href="index.html">Index</a> &#8594; <a href="modules.html">Modules</a> &#8594; <a href="modules_handlers.html">Handlers</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_handler_mysql_bridge">Handler: MySQL bridge</h2>
+<div class="sectionbody">
+<div class="para"><p>This handler offers a lightweight database abstraction layer that
+will provide all the benefits of connection pooling. This in turn
+offer scalable advantages for high-load websites.</p></div>
+<div class="para"><p>The original implementation of
+<a href="http://code.nytimes.com/projects/dbslayer/">DBSlayer</a> was a MySQL
+to JSON over HTTP bridge. This handler outperforms any other
+implementation by far, and besides JSON the handler can also process
+Python, Ruby and PHP.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_handler_dbslayer.png" alt="DBSlayer" title="DBSlayer"/>
+</div>
+</div>
+<div class="para"><p>It also makes use of a <a href="modules_balancers.html">balancing strategy</a>
+to manage at least one <a href="config_info_sources.html">information
+source</a>: the MySQL server being bridged.</p></div>
+<h4 id="_parameters">Parameters</h4>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="400" />
+<col width="400" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameter                 
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    <em>user</em>                  
+    </td>
+    <td align="left">
+    The MySQL user to authenticate as.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>password</em>              
+    </td>
+    <td align="left">
+    The MySQL user password to use.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>db</em>                    
+    </td>
+    <td align="left">
+    Optional. A MySQL database name.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    <em>lang</em>                  
+    </td>
+    <td align="left">
+    Language from which the information will                             be consumed: json | python | ruby | php
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>Note that for this module to be correctly compiled, the MySQL database
+development files are required.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

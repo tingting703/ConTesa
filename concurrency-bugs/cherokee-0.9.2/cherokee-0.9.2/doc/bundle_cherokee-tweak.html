@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_bundle_html_cherokee_bundle_a"><a href="index.html">Index</a> &#8594; <a href="bundle.html">Cherokee Bundle</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_cherokee_bundle_cherokee_tweak">Cherokee Bundle: cherokee-tweak</h2>
+<div class="sectionbody">
+<div class="para"><p>This command-line tool is also not as well known as it would. Again
+this is not by lack of merits, which in fact are considerable. Its
+intended audience are also system administrators and developers.</p></div>
+<div class="para"><p><tt>cherokee-tweak</tt> is a swiss army knife that allows to perform several
+administrative tasks from the command line. It can connect to a
+running Cherokee instance, be it in the local computer or at a remote
+location, and request it to perform several actions.</p></div>
+<div class="para"><p>These actions are:</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+Log rotation: <tt>logrotate</tt>.
+</p>
+</li>
+<li>
+<p>
+Live tracing: <tt>trace</tt>.
+</p>
+</li>
+<li>
+<p>
+Provide information: <tt>info</tt>.
+</p>
+</li>
+</ul></div>
+<div class="para"><p>This is the full information provided by the manpage.</p></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="vlist"><dl>
+<dt>
+<strong>NAME</strong>
+</dt>
+<dd>
+<p>
+       cherokee-tweak  - Command-line interface to the Cherokee administrative
+       interface
+</p>
+</dd>
+<dt>
+<strong>SYNOPSIS</strong>
+</dt>
+<dd>
+<p>
+       cherokee-tweak -c command -a url [options]
+</p>
+</dd>
+<dt>
+<strong>DESCRIPTION</strong>
+</dt>
+<dd>
+<p>
+       cherokee-tweak connects to running cherokee instance, either  local  or
+       remote, and requests it to perform one of several actions.
+</p>
+</dd>
+<dt>
+<strong>OPTIONS</strong>
+</dt>
+<dd>
+<p>
+       cherokee-tweak accepts the following options:
+</p>
+<div class="vlist"><dl>
+<dt>
+-h, &#8212;help
+</dt>
+<dd>
+<p>
+               Shows brief usage information
+</p>
+</dd>
+<dt>
+-V, &#8212;version
+</dt>
+<dd>
+<p>
+               Prints version and exits
+</p>
+</dd>
+<dt>
+-u, &#8212;user= STRING
+</dt>
+<dd>
+<p>
+               Specifies the user name with which to identify to the server
+</p>
+</dd>
+<dt>
+-p, &#8212;password=STRING
+</dt>
+<dd>
+<p>
+               Specifies the password with which to identify to the server
+</p>
+</dd>
+<dt>
+-c, &#8212;command=STRING
+</dt>
+<dd>
+<p>
+               Required option. Command to execute: logrotate, trace or info
+</p>
+</dd>
+<dt>
+-a, &#8212;url=URL
+</dt>
+<dd>
+<p>
+               Required  option. URL where the administrative interface can be
+               found.  This target must be  defined  previously  in  cherokee-
+               admin, enabling a "Remote Administration" type handler (Virtual
+               Servers&#8594;Behaviour&#8594;Add new  rule,  and  then  Handler&#8594;"Remote
+               Administration").  The  deffinition of a security mechanisim is
+               highly encouraged.
+</p>
+</dd>
+<dt>
+-l, &#8212;log=PATH
+</dt>
+<dd>
+<p>
+               Log file to be rotated (Only to be used when -c is logrotate)
+</p>
+</dd>
+<dt>
+-t, &#8212;trace=STRING
+</dt>
+<dd>
+<p>
+               Modules to be traced (Only to be used when -c is trace). Chero‐
+               kee must have been compiled with the &#8212;enable-trace for this to
+               work. Everything traceable  with  CHEROKEE_TRACE  can  also  be
+               traced this way.
+</p>
+</dd>
+</dl></div>
+</dd>
+</dl></div>
+</div></div>
+<div class="para"><p>To use <tt>cherokee-tweak</tt>, an administrative interface must be defined
+within <a href="bundle_cherokee-admin.html">cherokee-admin</a>. That is, you
+must define a path managed by the handler <tt>Remote
+Administration</tt>. This can be done through the <em>Virtual Servers</em> option,
+in <em>Behaviour</em> and using the <em>Add new rule</em> option.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_handler_admin.png" alt="Setting up an admin interface" title="Setting up an admin interface"/>
+</div>
+</div>
+<div class="para"><p>Please note that while you are at it, the deffinition of a security
+(through the <em>Security</em> tab) is highly encouraged. Although you have
+the choice to, you should never use <em>None</em> as security mechanisim
+since this would leave your system exposed to third parties using
+<tt>cherokee-tweak</tt>.</p></div>
+<div class="para"><p>Also note that the usage of the <tt>trace</tt> command has no effect unless
+Cherokee is compiled with the <tt>&#8212;enable-trace</tt>. This is a debugging
+option and it is unlikely to be present in binary version of Cherokee
+not specifically compiled with this in mind.</p></div>
+<div class="para"><p>Every module traceable with CHEROKEE_TRACE can also be traced this
+way. Refer to the <a href="dev_debug.html">"Debugging"</a> section of the
+documentation for more information on this matter.</p></div>
+<div class="para"><p>Keep in mind one important thing: when the <tt>-t</tt> option is specificed,
+<tt>cherokee-tweak</tt> activates the tracing functionality within the
+<tt>cherokee</tt> instance. It does not provide tracing of its own. This
+means the debugging information will appear in the machine that is
+actually running the <tt>cherokee</tt> instance. This may or may not be the
+same that is running the <tt>cherokee-tweak</tt> process.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

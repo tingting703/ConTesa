@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_bundle_html_cherokee_bundle_a"><a href="index.html">Index</a> &#8594; <a href="bundle.html">Cherokee Bundle</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_cherokee_bundle_cherokee">Cherokee Bundle: cherokee</h2>
+<div class="sectionbody">
+<div class="para"><p>This command-line tool is the main Cherokee executable. It is used as
+a safety net to invoke <tt>cherokee-worker</tt> and to ensure it is always
+functioning. It also plays an important role in the
+<a href="other_goodies.html#zero-downtime">zero-downtime</a> mechanism
+implemented to allow graceful restarts of the server.</p></div>
+<div class="para"><p>This is the full information provided by the manpage.</p></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="vlist"><dl>
+<dt>
+<strong>NAME</strong>
+</dt>
+<dd>
+<p>
+       cherokee - Cherokee Web Server
+</p>
+</dd>
+<dt>
+<strong>SYNOPSIS</strong>
+</dt>
+<dd>
+<p>
+       cherokee [options]
+</p>
+</dd>
+<dt>
+<strong>DESCRIPTION</strong>
+</dt>
+<dd>
+<p>
+       <tt>cherokee</tt> is an extremely fast, flexible and embeddable web server.
+</p>
+</dd>
+<dt>
+<strong>OPTIONS</strong>
+</dt>
+<dd>
+<p>
+       This command will launch the Cherokee webserver. It accepts the following options:
+</p>
+<div class="vlist"><dl>
+<dt>
+-h, &#8212;help
+</dt>
+<dd>
+<p>
+               Prints a brief help message and terminates execution
+</p>
+</dd>
+<dt>
+-V, &#8212;version
+</dt>
+<dd>
+<p>
+               Prints Cherokee’s version and terminates execution
+</p>
+</dd>
+<dt>
+-t, &#8212;test
+</dt>
+<dd>
+<p>
+               Perform a sanity check on the configuration  file. The  server will not run.
+</p>
+</dd>
+<dt>
+-d, &#8212;detach
+</dt>
+<dd>
+<p>
+               Launches  the server as a background process (default behaviour is to stay attached to the controlling terminal).
+</p>
+</dd>
+<dt>
+-C, &#8212;config=PATH
+</dt>
+<dd>
+<p>
+               Specifies an alternative path for the configuration file to use instead of the default cherokee.conf
+</p>
+</dd>
+<dt>
+-p, &#8212;port=PORT
+</dt>
+<dd>
+<p>
+               TCP port number to which the server will listen.
+</p>
+</dd>
+<dt>
+-r, &#8212;documentroot=PATH
+</dt>
+<dd>
+<p>
+               Launches  a server exposing statically the specified directory. When launched with -r, the configuration file is  ignored,  and the Cherokee instance runs with its default values.
+</p>
+</dd>
+<dt>
+-i, &#8212;print
+</dt>
+<dd>
+<p>
+               Print server technical information.
+</p>
+</dd>
+</dl></div>
+</dd>
+<dt>
+<strong>SIGNALS</strong>
+</dt>
+<dd>
+<p>
+       The following signals are supported by Cherokee:
+</p>
+<div class="hlist"><table>
+<tr>
+<td class="hlist1">
+SIGHUP
+</td>
+<td class="hlist2">
+Restarts the server gracefully
+</td>
+</tr>
+<tr>
+<td class="hlist1">
+SIGUSR1
+</td>
+<td class="hlist2">
+Restarts the server closing all the opened connections
+</td>
+</tr>
+<tr>
+<td class="hlist1">
+SIGUSR2
+</td>
+<td class="hlist2">
+Reopens the log files
+</td>
+</tr>
+<tr>
+<td class="hlist1">
+SIGTERM
+</td>
+<td class="hlist2">
+Exits
+</td>
+</tr>
+</table></div>
+</dd>
+<dt>
+<strong>SEE ALSO</strong>
+</dt>
+<dd>
+<p>
+       Cherokee can be run either with this command or
+       <tt>cherokee-worker</tt>.  This last option is discouraged if you are
+       not developing though.  Note that, for most systems, a
+       startup/shutdown script such as /etc/init.d/cherokee is
+       provided and will probably be the most convenient invocation
+       method.
+</p>
+</dd>
+</dl></div>
+</div></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

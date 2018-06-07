@@ -1,0 +1,1573 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_dev_html_development_info_a"><a href="index.html">Index</a> &#8594; <a href="dev.html">Development info</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_development_cherokee_conf">Development: cherokee.conf</h2>
+<div class="sectionbody">
+<h3 id="_introduction">Introduction</h3><div style="clear:left"></div>
+<div class="para"><p>Cherokee's configuration system is based on an internal text file
+format that the average user should not know about. This configuration
+file is read by the server and modified by the administration
+interface, so unless you are a Cherokee developer or a really
+advanced user, the following format description will not be very
+interesting to you.</p></div>
+<div class="para"><p>The default location for Cherokee configuration files is
+<tt>`/etc/cherokee</tt>`, but this may vary based on distribution or
+installation parameters.</p></div>
+<div class="para"><p>If you are completely sure about what you are doing, you can modify it
+by hand. We recommend you not to do so, since everything can be
+handled from <a href="bundle_cherokee-admin.html">cherokee-admin</a> and a lot
+of security measures and consistency checks are made to ensure you end
+up with a well formed <tt>cherokee.conf</tt> file.</p></div>
+<div class="para"><p>Having said that, let's proceed to describe the configuration file format. It
+is basically a text file that contains a tree where nodes
+contain values.</p></div>
+<div class="vlist"><dl>
+<dt>
+Let's see a basic example
+</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    server!port = 80
+    server!keepalive = 1</tt></pre>
+</div></div>
+</dd>
+</dl></div>
+<div class="para"><p>Most of the modules and plug-ins read a piece of the tree to
+configure themselves. It provides extremely flexible configuration
+capabilities for the price of a fairly complex text file. However, I
+would like to point out again that users should never read of modify the
+configuration file by hand, so it is a format that only developers
+should know about.</p></div>
+<div class="para"><p>The following blocks will summarize the configuration keys that the
+current Cherokee release handles:</p></div>
+<h3 id="_server">Server</h3><div style="clear:left"></div>
+<div class="para"><p>The server configuration keys define some of the server-wide
+properties, such as the user under which the server ought to run if it
+is run as root or whether to use keep-alive connections.</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="266" />
+<col width="266" />
+<col width="266" />
+<thead>
+  <tr>
+    <th align="left">
+    <strong>Key</strong>
+    </th>
+    <th align="left">
+    <strong>Type</strong>
+    </th>
+    <th align="left">
+    <strong>Description</strong>
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    server!port
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    TCP port for HTTP
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!port_tls
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    TCP port for HTTPS
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!max_fds
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    Max open file descriptors
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!listen_queue
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    Length of the listen queue
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!thread_number
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    Number of threads
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!sendfile_min
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    Minimum file size of using sendfile
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!sendfile_max
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    Maximum file size of using sendfile
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!max_connection_reuse
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    How many connections to reuse
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!ipv6
+    </td>
+    <td align="left">
+    Bool           
+    </td>
+    <td align="left">
+    Whether to use IPv6
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!timeout
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    Connections timeout
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!log_flush_elapse
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    Time between log flushes
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!keepalive
+    </td>
+    <td align="left">
+    Bool           
+    </td>
+    <td align="left">
+    Allow keepalive connections
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!keepalive_max_requests
+    </td>
+    <td align="left">
+    Number         
+    </td>
+    <td align="left">
+    How many keepalive reqs per connection
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!unix_socket
+    </td>
+    <td align="left">
+    Path           
+    </td>
+    <td align="left">
+    Listen to a Unix socket
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!panic_action
+    </td>
+    <td align="left">
+    Path           
+    </td>
+    <td align="left">
+    Path to cherokee-panic
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!chroot
+    </td>
+    <td align="left">
+    Bool           
+    </td>
+    <td align="left">
+    Whether to use chroot
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!pid_file
+    </td>
+    <td align="left">
+    Path           
+    </td>
+    <td align="left">
+    PID file
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!listen
+    </td>
+    <td align="left">
+    IP             
+    </td>
+    <td align="left">
+    Listen NIC
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!poll_method
+    </td>
+    <td align="left">
+    String         
+    </td>
+    <td align="left">
+    Which poll method it should use
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!server_tokens
+    </td>
+    <td align="left">
+    String         
+    </td>
+    <td align="left">
+    Server identification: minor, minimal, os, full
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!thread_policy
+    </td>
+    <td align="left">
+    String         
+    </td>
+    <td align="left">
+    Thread policy: fifo, rr, other
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!user
+    </td>
+    <td align="left">
+    String/Number  
+    </td>
+    <td align="left">
+    Change effective user
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!group
+    </td>
+    <td align="left">
+    String/Number  
+    </td>
+    <td align="left">
+    Change effective group
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!module_dir
+    </td>
+    <td align="left">
+    Path           
+    </td>
+    <td align="left">
+    Path to the plug-in directory
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    server!module_deps
+    </td>
+    <td align="left">
+    Path           
+    </td>
+    <td align="left">
+    Path to the plug-in inter-dependencies files
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p><tt>`server!server_tokens</tt>` parameters</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="179" />
+<col width="620" />
+<thead>
+  <tr>
+    <th align="left">
+    Value                     
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    Product                   
+    </td>
+    <td align="left">
+    Cherokee
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Minor                     
+    </td>
+    <td align="left">
+    Cherokee/0.9
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Minimal                   
+    </td>
+    <td align="left">
+    Cherokee/0.9.0
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    OS                        
+    </td>
+    <td align="left">
+    Cherokee/0.9.0 (UNIX)
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Full                      
+    </td>
+    <td align="left">
+    Cherokee/0.9.0 (UNIX) Ext/0.0 Ext2/0.0
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p><tt>`server!thread_policy</tt>` parameters</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="179" />
+<col width="620" />
+<thead>
+  <tr>
+    <th align="left">
+    Value                     
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    fifo                      
+    </td>
+    <td align="left">
+    First in first out
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    rr                        
+    </td>
+    <td align="left">
+    Round Robin
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    other                     
+    </td>
+    <td align="left">
+    By default in Linux
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<h3 id="_virtual_server">Virtual Server</h3><div style="clear:left"></div>
+<div class="para"><p>A virtual server contains the information related to one or more
+domains under the same configuration. In a Cherokee server there must
+be at least one virtual server named <tt>`default</tt>`, and there is no
+maximum number.</p></div>
+<div class="para"><p>The prefix of this type of entry is <tt>`vserver</tt>`, and by far, it is the
+most common type of entry.</p></div>
+<div class="para"><p>Virtual servers are stored in a numbered list. The starting number
+does not really matter. What matters is that the list will be
+interpreted in an orderly fashion to prioritize some virtual servers
+over others, which can be of use depending on the way these are
+defined. The only precuation to take is making sure there are no
+repeated priorities, since the behavior in these cases in undefined.</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="312" />
+<col width="91" />
+<col width="395" />
+<thead>
+  <tr>
+    <th align="left">
+    <strong>Key</strong>                           
+    </th>
+    <th align="left">
+    <strong>Type</strong>
+    </th>
+    <th align="left">
+    <strong>Description</strong>
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    vserver!1!nick = default          
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    The name of the Virtual Server
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    vserver!1!document_root           
+    </td>
+    <td align="left">
+    Path    
+    </td>
+    <td align="left">
+    Document Root path
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    vserver!1!user_dir                
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Users' web directory (for ~ requests)
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    vserver!1!domain! <tt>`id</tt>`          
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Domain name, admits wildcards
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    vserver!1!error_handler           
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Defines the error handler module
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    vserver!1!directory_index         
+    </td>
+    <td align="left">
+    List    
+    </td>
+    <td align="left">
+    String list: Directory indexes
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    vserver!1!ssl_certificate_file    
+    </td>
+    <td align="left">
+    Path    
+    </td>
+    <td align="left">
+    TLS/SSL certificate file
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    vserver!1!ssl_certificate_key_file
+    </td>
+    <td align="left">
+    Path    
+    </td>
+    <td align="left">
+    TLS/SSL certificate key file
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    vserver!1!ssl_ca_list_file        
+    </td>
+    <td align="left">
+    Path    
+    </td>
+    <td align="left">
+    TLS/SSL CA list file
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>Besides these configuration keys there are a few other more complex
+that needs further explanation:</p></div>
+<h3 id="_defining_a_virtual_server_behavior">Defining a virtual server behavior</h3><div style="clear:left"></div>
+<div class="para"><p>A virtual server behavior is basically defined by a rule list, which
+includes a number of rules against which each request will be checked.</p></div>
+<div class="para"><p>There are a number of rules types, each one checking a different
+aspect of the request. The most usual rule types are the ones that
+checks the request URI: directories, extensions, regular expressions
+and headers.</p></div>
+<div class="para"><p>All the rule types accept the same configuration sub-properties.
+However, the <tt>`match</tt>` property must be present in all the cases. It
+specifies which is the rule type and its properties.</p></div>
+<div class="vlist"><dl>
+<dt>
+The general syntax is
+</dt>
+<dd>
+<div class="para"><p><tt>vserver ! order ! rule ! prioriry ! match</tt></p></div>
+</dd>
+</dl></div>
+<div class="para"><p>The rule types plug-ins shipped within a standard Cherokee release
+include:</p></div>
+<div class="vlist"><dl>
+<dt>
+<strong>Directory</strong>
+</dt>
+<dd>
+<p>
+The directory specifies how to handle its contents.
+</p>
+<div class="para"><p>Example: an entry with priority 20, setting the properties for the
+<strong>icons</strong> directory of the default virtual host would be represented
+by:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>      vserver!1!nick = default
+      vserver!1!rule!20!match!type = directory
+      vserver!1!rule!20!match!directory = /icons</tt></pre>
+</div></div>
+</dd>
+<dt>
+<strong>Extension</strong>
+</dt>
+<dd>
+<p>
+It specifies a list of extensions and how they should be handled.
+</p>
+<div class="para"><p>Eg: the JPG extensions is:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>      vserver!1!rule!30!match!type = extensions
+      vserver!1!rule!30!match!extensions = jpg,jpeg</tt></pre>
+</div></div>
+</dd>
+<dt>
+<strong>Requests</strong>
+</dt>
+<dd>
+<p>
+When a request matches a regular expression entry, it uses its configuration.
+</p>
+<div class="para"><p>Eg: requests beginning with <em>a</em> and PHP extension:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>      vserver!1!rule!40!match!type = request
+      vserver!1!rule!40!match!request = ^a.*\.php$</tt></pre>
+</div></div>
+</dd>
+<dt>
+<strong>Header</strong>
+</dt>
+<dd>
+<p>
+It tries to match a regular expression against a certain header
+entry.
+</p>
+<div class="para"><p>Eg: check whether the Referer header matches a specific host:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>      vserver!1!rule!50!match!type = header
+      vserver!1!rule!50!match!header = Referer
+      vserver!1!rule!50!match!match = .+\.example\.com</tt></pre>
+</div></div>
+</dd>
+<dt>
+<strong>Default</strong>
+</dt>
+<dd>
+<p>
+This rules matches every request. There must be a default rule
+configured at the end of the rule list to handle the requests that
+did not match any other rule. The end of the list means the smallest
+priority value in relative terms. It doesn't have to be <tt>1</tt>
+necessarily.
+</p>
+<div class="para"><p>Eg: Default rule for the <em>default</em> virtual server:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>      vserver!1!rule!1!match = default
+      vserver!1!rule!1!handler = common
+      vserver!1!rule!1!handler!iocache = 0</tt></pre>
+</div></div>
+<div class="para"><p>The <tt>`!encoder</tt>` configuration entry allows to configure encoding
+plug-ins. Each entry applies to a specific rule.</p></div>
+</dd>
+</dl></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="135" />
+<col width="664" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameter                 
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    deflate                   
+    </td>
+    <td align="left">
+    deflate encoder. 0|1 to define disabled|enabled.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    gzip                      
+    </td>
+    <td align="left">
+    gzip encoder. 0|1 to define disabled|enabled.
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="vlist"><dl>
+<dt>
+Example
+</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><tt>   vserver!1!rule!100!encoder!deflate = 1
+   vserver!1!rule!100!encoder!gzip = 1
+   vserver!1!rule!100!match = extensions
+   vserver!1!rule!100!match!extensions = html</tt></pre>
+</div></div>
+<div class="para"><p>The following parameters are concatenated with any of the previous
+kinds of entry:</p></div>
+</dd>
+</dl></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="122" />
+<col width="89" />
+<col width="587" />
+<thead>
+  <tr>
+    <th align="left">
+    <strong>Key</strong>                                 
+    </th>
+    <th align="left">
+    <strong>Type</strong>
+    </th>
+    <th align="left">
+    <strong>Description</strong>
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    priority                                
+    </td>
+    <td align="left">
+    Number  
+    </td>
+    <td align="left">
+    Priority in the rules list
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    directory_root                          
+    </td>
+    <td align="left">
+    Path    
+    </td>
+    <td align="left">
+    Special Directory Root for the request
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    allow_from                              
+    </td>
+    <td align="left">
+    List    
+    </td>
+    <td align="left">
+    List of IP/Domain allowed to access the resource
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    handler                                 
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Handler (module) that handles the request
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth                                    
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Validator (module) that protects the resource
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    only_secure                             
+    </td>
+    <td align="left">
+    Bool    
+    </td>
+    <td align="left">
+    Allow only secure (https) connections
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>The <tt>`auth</tt>` entry deserves a little more attention,
+actually. Accepted validarot modules are <tt>htdigest, htpasswd, ldap,
+mysql, pam, plain</tt>. It restricts the access to some of the objects
+accessed by the web server based on a number of properties that are
+defined at its child properties:</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="128" />
+<col width="128" />
+<col width="543" />
+<thead>
+  <tr>
+    <th align="left">
+    <strong>Key</strong>                                 
+    </th>
+    <th align="left">
+    <strong>Type</strong>
+    </th>
+    <th align="left">
+    <strong>Description</strong>
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    auth!methods                            
+    </td>
+    <td align="left">
+    List    
+    </td>
+    <td align="left">
+    Allowed methods (basic &amp; digest)
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!realm                              
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Realm of the resource
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!users                              
+    </td>
+    <td align="left">
+    List    
+    </td>
+    <td align="left">
+    List of allowed users
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>Some validators have extra configuration keys.</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table: htdigest, htpasswd, plain</caption>
+<col width="177" />
+<col width="98" />
+<col width="523" />
+<thead>
+  <tr>
+    <th align="left">
+    <strong>Key</strong>           
+    </th>
+    <th align="left">
+    <strong>Type</strong>
+    </th>
+    <th align="left">
+    <strong>Description</strong>
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    auth!passwdfile   
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Full path to the passwords' file. htdigest|htpasswd|plain
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table: mysql</caption>
+<col width="177" />
+<col width="98" />
+<col width="523" />
+<thead>
+  <tr>
+    <th align="left">
+    <strong>Key</strong>           
+    </th>
+    <th align="left">
+    <strong>Type</strong>
+    </th>
+    <th align="left">
+    <strong>Description</strong>
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    auth!host           
+    </td>
+    <td align="left">
+    String
+    </td>
+    <td align="left">
+    MySQL host.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!database       
+    </td>
+    <td align="left">
+    String
+    </td>
+    <td align="left">
+    Database name.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!user           
+    </td>
+    <td align="left">
+    String
+    </td>
+    <td align="left">
+    Database user.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!passwd         
+    </td>
+    <td align="left">
+    String
+    </td>
+    <td align="left">
+    Database password.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!port           
+    </td>
+    <td align="left">
+    Number
+    </td>
+    <td align="left">
+    Port number of the service.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!query          
+    </td>
+    <td align="left">
+    String
+    </td>
+    <td align="left">
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!use_md5_passwd 
+    </td>
+    <td align="left">
+    Bool  
+    </td>
+    <td align="left">
+    Encrypt the passwords with MD5.
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table: ldap</caption>
+<col width="128" />
+<col width="108" />
+<col width="562" />
+<thead>
+  <tr>
+    <th align="left">
+    <strong>Key</strong>      
+    </th>
+    <th align="left">
+    <strong>Type</strong>
+    </th>
+    <th align="left">
+    <strong>Description</strong>
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    auth!server  
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    IP or hostname of the LDAP server.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!port    
+    </td>
+    <td align="left">
+    Number  
+    </td>
+    <td align="left">
+    Port number of the service.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!base_dn 
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Base distinguished name.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!bind_dn 
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    User
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!bind_pw 
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Password
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!filter  
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    LDAP search filter.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!tls     
+    </td>
+    <td align="left">
+    Bool    
+    </td>
+    <td align="left">
+    Indicates TLS based integrity
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    auth!ca_file 
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Cert file. Must be provided if TLS is enabled.
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>Here are a few examples about how this notation works:</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+The default virtual server uses the "common" handler as default
+  choice for its root directory:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    vserver!1!nick = default
+    vserver!1!rule!10!directory!/!handler = common</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+The *.example.com and *.examples.org domains are restricted to be
+  accessed from the local loop interface, and have to be handled as a
+  FastCGI:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    vserver!5!nick = example
+    vserver!5!domains!1 = *.example.com
+    vserver!5!domains!2 = *.example.org
+    vserver!5!rule!10!directory!/!handler = fcgi
+    vserver!5!rule!10!directory!/!priority = 1
+    vserver!5!rule!10!directory!/!allow_from = 127.0.0.1,::1</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+Rules can be defined that return custom errors using the
+  <a href="modules_handlers_custom_error.html">HTTP error</a> handler: <tt>custom
+  error</tt>.
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    vserver!10!rule!100!handler = custom_error
+    vserver!10!rule!100!handler!error = 400</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+ISO images should be handled as files and are protected by a
+  htdigest file using only Digest authentication:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    vserver!1!nick = default
+    vserver!1!rule!100!extensions!iso,ISO!handler = file
+    vserver!1!rule!100!extensions!iso,ISO!auth = htdigest
+    vserver!1!rule!100!extensions!iso,ISO!auth!realm = My secret isos
+    vserver!1!rule!100!extensions!iso,ISO!auth!methods = digest
+    vserver!1!rule!100!extensions!iso,ISO!auth!passwdfile = /var/passwd/isos.htdigest</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+Authenticated directory with <tt>htpasswd</tt> validator:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>vserver!10!rule!500!auth = htpasswd
+vserver!10!rule!500!auth!methods = basic
+vserver!10!rule!500!auth!passwdfile = /var/www/passwd.htpasswd
+vserver!10!rule!500!auth!realm = secret
+vserver!10!rule!500!match = directory
+vserver!10!rule!500!match!directory = /auth
+vserver!10!rule!500!match!final = 0
+vserver!10!rule!500!only_secure = 0</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+Same example, using <tt>mysql</tt> validator:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>vserver!10!rule!500!auth = mysql
+vserver!10!rule!500!auth!database = auth_users
+vserver!10!rule!500!auth!host = localhost
+vserver!10!rule!500!auth!methods = basic,digest
+vserver!10!rule!500!auth!passwd = db_passwd
+vserver!10!rule!500!auth!port = 3306
+vserver!10!rule!500!auth!query = SELECT password FROM auth_users WHERE username= '${user}'
+vserver!10!rule!500!auth!realm = secret
+vserver!10!rule!500!auth!use_md5_passwd = 1
+vserver!10!rule!500!auth!user = db_user
+vserver!10!rule!500!match = directory
+vserver!10!rule!500!match!directory = /auth
+vserver!10!rule!500!match!final = 0
+vserver!10!rule!500!only_secure = 0</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+Same thing with <tt>ldap</tt> validator:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>vserver!10!rule!500!auth = ldap
+vserver!10!rule!500!auth!base_dn = Example DN
+vserver!10!rule!500!auth!bind_dn = Directory Manager
+vserver!10!rule!500!auth!bind_pw = secretpassword
+vserver!10!rule!500!auth!methods = basic
+vserver!10!rule!500!auth!port = 389
+vserver!10!rule!500!auth!realm = secret
+vserver!10!rule!500!auth!server = ldap.example.com
+vserver!10!rule!500!auth!tls = 0
+vserver!10!rule!500!match = directory
+vserver!10!rule!500!match!directory = /auth
+vserver!10!rule!500!match!final = 0
+vserver!10!rule!500!only_secure = 0</tt></pre>
+</div></div>
+</li>
+</ul></div>
+<h3 id="_logs">Logs</h3><div style="clear:left"></div>
+<div class="para"><p>The log files are defined as properties inside the Virtual Server
+hierarchy under a <tt>`logger</tt>` entry with the following properties:</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="266" />
+<col width="266" />
+<col width="266" />
+<thead>
+  <tr>
+    <th align="left">
+    <strong>Key</strong>                                 
+    </th>
+    <th align="left">
+    <strong>Type</strong>
+    </th>
+    <th align="left">
+    <strong>Description</strong>
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    logger                                  
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Output format (validator name)
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    logger!access                           
+    </td>
+    <td align="left">
+    Node    
+    </td>
+    <td align="left">
+    Defines the access log file
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    logger!error                            
+    </td>
+    <td align="left">
+    Node    
+    </td>
+    <td align="left">
+    Defines the error log file
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>and then, both access and error accept a number of parameters
+depending on its property <tt>`type</tt>` which specifies where the logging
+information will be written. It can be either:</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="400" />
+<col width="400" />
+<thead>
+  <tr>
+    <th align="left">
+    <strong>Logger writer Type</strong>                  
+    </th>
+    <th align="left">
+    <strong>Description</strong>
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    file                                    
+    </td>
+    <td align="left">
+    Write a file
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    syslog                                  
+    </td>
+    <td align="left">
+    Use the system logging mechanism
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    stderr                                  
+    </td>
+    <td align="left">
+    Use the standard output
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    exec                                    
+    </td>
+    <td align="left">
+    Execute a program with each line
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>If either <tt>`file</tt>` or <tt>`exec</tt>` is used, there is an additional
+parameter that has to be set. In the case of file, a sub-property
+named <tt>`filename</tt>` and for exec <tt>`command</tt>`.</p></div>
+<div class="para"><p>Examples:</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+Apache format logs to the regular files:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    vserver!1!nick = default
+    vserver!1!logger = combined
+    vserver!1!logger!access!type = file
+    vserver!1!logger!access!filename = /var/log/cherokee.access.log
+    vserver!1!logger!error!type = file
+    vserver!1!logger!error!filename = /var/log/cherokee.error.log</tt></pre>
+</div></div>
+</li>
+</ul></div>
+<h3 id="_information_sources">Information sources</h3><div style="clear:left"></div>
+<div class="para"><p></p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="266" />
+<col width="266" />
+<col width="266" />
+<thead>
+  <tr>
+    <th align="left">
+    <strong>Key</strong>         
+    </th>
+    <th align="left">
+    <strong>Type</strong>
+    </th>
+    <th align="left">
+    <strong>Description</strong>
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    nick            
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Alias to identify the source
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    env             
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Variable to be set in the environment
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    host            
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    host:port or path to unix socket
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    interpreter     
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    command to launch the service if any
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    type            
+    </td>
+    <td align="left">
+    Type    
+    </td>
+    <td align="left">
+    <tt>host</tt> | <tt>interpreter</tt>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>Examples:</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+PHP configured for FastCGI through Unix socket
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>source!1!env!PHP_FCGI_CHILDREN = 5
+source!1!host = /tmp/cherokee-php.sock
+source!1!interpreter = /usr/bin/php-cgi -b /tmp/cherokee-php.sock
+source!1!nick = php
+source!1!type = interpreter</tt></pre>
+</div></div>
+</li>
+<li>
+<p>
+Or via <tt>host:port</tt> as remote host:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>source!1!host = localhost:1234
+source!1!interpreter = /usr/bin/php-cgi -b /tmp/cherokee-php.sock
+source!1!type = host</tt></pre>
+</div></div>
+</li>
+</ul></div>
+<h3 id="_balancers">Balancers</h3><div style="clear:left"></div>
+<div class="para"><p>The balancers must define the information sources to be used. For the
+ones defined in the examples above, using round robin from within the
+FastCGI handler, the following example would apply.</p></div>
+<div class="vlist"><dl>
+<dt>
+Example
+</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><tt>vserver!10!rule!600!handler = fcgi
+vserver!10!rule!600!handler!balancer = round_robin
+vserver!10!rule!600!handler!balancer!source!1 = 1
+vserver!10!rule!600!match = extensions
+vserver!10!rule!600!match!extensions = php
+vserver!10!rule!600!match!final = 1</tt></pre>
+</div></div>
+</dd>
+</dl></div>
+<h3 id="_inclusion_of_configuration">Inclusion of Configuration</h3><div style="clear:left"></div>
+<div class="para"><p>Sometimes it is nice to break out your configuration into several logical files
+to be more modular as well as more organized.  You can use the <tt>`include</tt>`
+configuration to accomplish this.</p></div>
+<div class="vlist"><dl>
+<dt>
+Here is an example
+</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    include = /etc/cherokee/advanced.conf</tt></pre>
+</div></div>
+</dd>
+<dt>
+or even, it is possible to specify a directory to include all of its files
+</dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    include = /etc/cherokee/mods-enabled/</tt></pre>
+</div></div>
+</dd>
+</dl></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

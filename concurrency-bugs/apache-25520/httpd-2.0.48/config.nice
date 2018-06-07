@@ -1,0 +1,10 @@
+#! /bin/sh
+#
+# Created by configure
+
+CC="/home/tyu/Documents/llvm/build/bin/clang"; export CC
+CFLAGS="-O4"; export CFLAGS
+"./configure" \
+"--prefix=/home/tyu/Documents/concurrency-bugs/apache-25520/httpd-2.0.48/installed" \
+"--with-included-apr" \
+"$@"

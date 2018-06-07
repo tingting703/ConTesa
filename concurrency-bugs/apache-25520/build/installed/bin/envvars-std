@@ -1,0 +1,8 @@
+# envvars-std - default environment variables for apachectl
+#
+# This file is generated from envvars-std.in
+#
+LD_LIBRARY_PATH="/home/tyu/Documents/concurrency-bugs/apache-25520/build/installed/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH
+#
+

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_other_html_other_information_a"><a href="index.html">Index</a> &#8594; <a href="other.html">Other information</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_other_frequently_asked_questions">Other: Frequently Asked Questions</h2>
+<div class="sectionbody">
+<div class="para"><p>Here is a list of the most frequently asked questions. Please refer to
+the appropiate section of the documentation for more details.</p></div>
+<h3 id="_how_to_compile_it">How to compile it</h3><div style="clear:left"></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+make</tt></pre>
+</div></div>
+<h3 id="_how_to_create_dynamic_modules">How to create dynamic modules</h3><div style="clear:left"></div>
+<div class="para"><p>It's the default way.</p></div>
+<h3 id="_how_to_configure_the_module_xyz_to_be_linked_statically">How to configure the module xyz to be linked statically</h3><div style="clear:left"></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>./configure --prefix=/usr --sysconfdir=/etc \
+  --localstatedir=/var                      \
+  --enable-static-module=xyz</tt></pre>
+</div></div>
+<h3 id="_how_to_build_everything_statically">How to build everything statically</h3><div style="clear:left"></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>./configure --prefix=/usr --sysconfdir=/etc \
+  --localstatedir=/var                      \
+  --enable-static-module=all</tt></pre>
+</div></div>
+<h3 id="_how_to_create_a_self_signed_certificate_for_tls">How to create a self signed certificate for TLS</h3><div style="clear:left"></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>openssl req -days 1000 -new -x509 -nodes    \
+  -out /etc/cherokee/ssl/cherokee.pem       \
+  -keyout /etc/cherokee/ssl/cherokee.pem</tt></pre>
+</div></div>
+<h3 id="_how_to_access_cherokee_admin_from_a_remote_machine">How to access cherokee-admin from a remote machine</h3><div style="clear:left"></div>
+<div class="para"><p>cherokee-admin binds only to local loopback by default. There are some
+workarounds:</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+Create an SSH tunnel. This is the recommended way. In order to do so
+  you must issue the following command:
+</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>ssh -L 9090:localhost:9090 remote_IP</tt></pre>
+</div></div>
+<div class="para"><p>After that you can access the remote interface through
+  <a href="http://localhost:9090">http://localhost:9090</a> and every request will be forwarded to the
+  remote IP running cherokee-admin.</p></div>
+</li>
+<li>
+<p>
+Launch cherokee-admin with the -b parameter in order to force it to
+  listen to all the network interfaces.
+</p>
+</li>
+<li>
+<p>
+Finally you could always install cherokee on your local host,
+  configure it there and then copy the generated cherokee.conf file to
+  the device running the cherokee instance you wanted to set up.
+</p>
+</li>
+</ul></div>
+<h3 id="_how_to_manually_write_configuration_files_without_cherokee_admin">How to manually write configuration files without cherokee-admin</h3><div style="clear:left"></div>
+<div class="para"><p>The configuration file is a plain text file and its syntax is well
+documented. Check the <a href="dev_cherokee.conf.html">cherokee.conf</a>
+internal format information. Notice that manually editing the
+configuration is not the recommended method, but the format will
+always be kept updated to facilitate scripting tasks, working with
+embedded devices and other similar situations.</p></div>
+<h3 id="_does_cherokee_speak_wsgi_natively_like_tt_mod_wsgi_tt_does">Does Cherokee speak WSGI natively like <tt>mod_wsgi</tt> does?</h3><div style="clear:left"></div>
+<div class="para"><p>In short: no. We believe that we should not implement anything like
+<tt>mod_wsgi</tt> for a number of reasons.</p></div>
+<div class="ilist"><ul>
+<li>
+<p>
+First, and purely from an architectural point, embedding an
+interpreter into the web server doesn't feel quite right. Be it a huge
+interpreter linked against dozens of libraries or be it something
+using Python's shared libraries, it doesn't fit with the design
+principles applied throughout Cherokee's code base.
+</p>
+</li>
+<li>
+<p>
+Second, it sounds hard to believe that <tt>mod_wsgi</tt> is faster than a
+plain and simple SCGI application writing to a Unix socket: WSGI
+applications can also use <a href="modules_handlers_fcgi.html">FastCGI</a> and
+<a href="modules_handlers_scgi.html">SCGI</a> backends, which are fully
+supported by Cherokee.
+</p>
+</li>
+</ul></div>
+<div class="para"><p>We believe Cherokee should be as fast, light, clean and secure as
+possible, and to this end we tend to disregard bulky and monolithic
+solutions. At least until we are given very, VERY, good reasons to
+give it further consideration.</p></div>
+<div class="para"><p>Give Cherokee (SCGI|FastCGI) a try with your WSGI application.  We
+believe that besides fixing both the architectural and security flaws
+you will improve performance.</p></div>
+<h3 id="_i_need_to_make_an_administration_script_what_signals_are_supported_by_cherokee">I need to make an administration script: What signals are supported by Cherokee?</h3><div style="clear:left"></div>
+<div class="para"><p>The list is documented in the <a href="other_signals.html">Signals</a> entry.</p></div>
+<h3 id="_is_there_a_clean_way_of_switching_cherokee_to_maintenance_mode">Is there a clean way of switching Cherokee to Maintenance mode?</h3><div style="clear:left"></div>
+<div class="para"><p>Check the <a href="cookbook.html">Cookbook</a>, there is a
+<a href="cookbook_maintenance.html">recipe on the subject</a>.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

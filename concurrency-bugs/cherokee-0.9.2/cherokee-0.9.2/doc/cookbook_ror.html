@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_cookbook_html_cookbook_a"><a href="index.html">Index</a> &#8594; <a href="cookbook.html">Cookbook</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_cookbook_setting_up_ruby_on_rails">Cookbook: Setting up Ruby on Rails</h2>
+<div class="sectionbody">
+<div class="para"><p>Setting up a Rails application to run with Cherokee and FastCGI is not
+only easy. It is also the best possible solution to manage the load
+among one or many Rails servers, using an extremely efficient web
+server to manage the web part and leaving as many free resources as
+possible to Rails.</p></div>
+<div class="para"><p>Of course you will need a working Rails installation for this to
+succed. You can set this up easily. If you have Ruby and Ruby Gems
+installed, you can directly install the <em>Rails</em> gem like this:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt># gem update --system
+# gem install rails</tt></pre>
+</div></div>
+<div class="para"><p>Note that on Debian based systems you don't even need to install
+Rubygems. There is already a package that will install every needed
+dependency:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt># apt-get install rails</tt></pre>
+</div></div>
+<div class="para"><p>The installation of the <em>Rails</em> gem directly would also work, but note
+that you cannot execute the first command because it is disabled by
+default.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt># gem update --system
+ERROR:  While executing gem ... (RuntimeError)
+    gem update --system is disabled on Debian. RubyGems can be updated \
+    using the official Debian repositories by aptitude or apt-get.</tt></pre>
+</div></div>
+<div class="para"><p>Once you are done with that, you must deploy your Rails project:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ rails example</tt></pre>
+</div></div>
+<div class="para"><p>You can do so wherever you want, but the usal recommended way of doing
+this is by deploying it outside of your web root path and then
+creating a symbolic link. This is simply to protect from exposure all
+the files that do not need to be in your document root.</p></div>
+<div class="para"><p>Assuming you deployed the <tt>example</tt> project in <tt>/home/foo/example</tt>,
+and you have writing permissions to your web path, <tt>/var/www</tt>, simply
+type:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>$ ln -s /home/foo/example/public /var/www/example</tt></pre>
+</div></div>
+<div class="para"><p>Now you are ready to configure Cherokee. You only need to know that
+you can spawn the FastCGI process using a script that is already in
+your deployed project. In this case,
+<tt>/home/foo/example/script/process/spawner</tt>.
+We will be using the default parameters (3 instances starting at port
+8000) but you can fine tune this using the many parameters provided by
+the script.</p></div>
+<div class="para"><p>The process is fairly simple. Set up a new rule for this new path and
+manage it with the FastCGI handler.</p></div>
+<div class="para"><div class="title">Common CGI options</div><p>Under <tt>Common CGI options</tt> make sure to check the <tt>Error handler</tt> box and
+uncheck <tt>Check file</tt>. This is to prevent possible errors with the
+<tt>INFO_PATH</tt> generation that can happen when an application, in this
+case <em>Rails</em>, manages the whole subtree. This is mentioned in the
+<a href="modules_handlers_cgi.html">Common CGI</a> section of the
+documentation.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/cookbook_ror_common.png" alt="Common CGI options" title="Common CGI options"/>
+</div>
+</div>
+<div class="para"><div class="title">FastCGI specific</div><p>Under <tt>FastCGI specific</tt> make sure to add the hosts providing the
+service. Do this by adding one or more
+<a href="config_info_sources.html">Information Sources</a>.</p></div>
+<div class="para"><p>Note that, in the definition of the informaction source, you will have
+to manually launch the <tt>spawner</tt> if you use a <tt>Remote host</tt> as
+<tt>Information source</tt> instead of a <tt>Local interpreter</tt>.</p></div>
+<div class="para"><p>You will simply have to add as many sources as desired, for instance
+our example uses the default values to set up ports 8000 through
+8002. These sources will be nicknamed <strong>ror0</strong>, <strong>ror1</strong> and <strong>ror2</strong>.</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="157" />
+<col width="642" />
+<thead>
+  <tr>
+    <th align="left">
+    Host           
+    </th>
+    <th align="left">
+    Interpreter
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    localhost:8000 
+    </td>
+    <td align="left">
+    <tt>/home/foo/example/script/process/spawner fastcgi</tt>
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    localhost:8001 
+    </td>
+    <td align="left">
+    <tt>/home/foo/example/script/process/spawner fastcgi</tt>
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    localhost:8002 
+    </td>
+    <td align="left">
+    <tt>/home/foo/example/script/process/spawner fastcgi</tt>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>If any of those ports was not reachable, the <tt>interpreter</tt> command
+would be launched and the fallen one would be reinstantiated.</p></div>
+<div class="para"><p>Here is a snapshot to show the creation of <strong>ror0</strong>. The rest are
+similar using the port variation detailed above.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/cookbook_ror_fcgi.png" alt="FastCGI specifics" title="FastCGI specifics"/>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

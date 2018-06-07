@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_modules_html_modules_a_8594_a_href_modules_handlers_html_handlers_a"><a href="index.html">Index</a> &#8594; <a href="modules.html">Modules</a> &#8594; <a href="modules_handlers.html">Handlers</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_handler_cgi">Handler: CGI</h2>
+<div class="sectionbody">
+<div class="para"><p>The cgi handler executes CGI programs.</p></div>
+<h3 id="_parameters">Parameters</h3><div style="clear:left"></div>
+<div class="para"><p>This module accepts three parameters:</p></div>
+<div class="tableblock">
+<table rules="rows"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="176" />
+<col width="114" />
+<col width="509" />
+<thead>
+  <tr>
+    <th align="left">
+    Parameters            
+    </th>
+    <th align="left">
+    Type           
+    </th>
+    <th align="left">
+    Description
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    Script Alias          
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    It defines a kind of execution interpreter.                                   The CGI will be run as a parameter of this                                   script.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Change to UID         
+    </td>
+    <td align="left">
+    String  
+    </td>
+    <td align="left">
+    Executes each CGI under its owner's user ID.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Error handler         
+    </td>
+    <td align="left">
+    Boolean 
+    </td>
+    <td align="left">
+    Use CGI output as error message.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Check file            
+    </td>
+    <td align="left">
+    Boolean 
+    </td>
+    <td align="left">
+    Check file existence to build PATH_INFO.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Pass request          
+    </td>
+    <td align="left">
+    Boolean 
+    </td>
+    <td align="left">
+    Pass request headers.
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Allow X-Sendfile      
+    </td>
+    <td align="left">
+    Boolean 
+    </td>
+    <td align="left">
+    Use the non-standard X-Sendfile header.
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="para"><p>Note that the <a href="other_goodies.html#x-sendfile">X-Sendfile</a> feature
+also supports <tt>X-Accel-Redirect</tt> headers transparently. This is to
+allow the migration of applications supporting it whithout having to
+make major code rewrites.</p></div>
+<h3 id="_warning">Warning:</h3><div style="clear:left"></div>
+<div class="para"><p>The <tt>Check file</tt> flag affects how PATH_INFO is generated. You should
+disable this when you have an application that is running the whole
+virtual server tree, as it is a common source of problems. You can
+look at a practical example about PATH_INFO in the
+<a href="modules_handlers_common.html">File &amp; Send</a> handler documentation.</p></div>
+<h3 id="_examples">Examples</h3><div style="clear:left"></div>
+<div class="para"><p>This is a pretty common example. It defines a directory called <tt>cgi</tt>
+that points to a path out of the Sever root directory where the
+CGI programs are located.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="media/images/admin_handler_cgi.png" alt="CGI" title="CGI"/>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>

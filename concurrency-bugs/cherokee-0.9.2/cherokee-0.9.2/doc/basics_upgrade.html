@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Keywords" content="cherokee web server httpd http" />
+    <meta name="Description" content="Cherokee is a flexible, very fast, lightweight Web server. It is implemented entirely in C, and has no dependencies beyond a standard C library. It is embeddable and extensible with plug-ins. It supports on-the-fly configuration by reading files or strings, TLS/SSL (via GNUTLS or OpenSSL), virtual hosts, authentication, cache friendly features, PHP, custom error management, and much more." />
+    <link href="media/css/cherokee_doc.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+<body>
+<h2 id="_a_href_index_html_index_a_8594_a_href_basics_html_getting_started_a"><a href="index.html">Index</a> &#8594; <a href="basics.html">Getting started</a></h2>
+<div class="sectionbody">
+</div>
+<h2 id="_upgrading_cherokee">Upgrading Cherokee</h2>
+<div class="sectionbody">
+<div class="para"><p>The current mechanism of choice to configure Cherokee did not exist
+prior to release 0.6. A lot has happened since then, and Cherokee has
+been constantly improving in terms of stability, efficiency and
+features.</p></div>
+<div class="para"><p>If you happen to be running an old version of Cherokee and would like
+to keep your current configuration settings, you can upgrade your
+cherokee.conf file through the Python scripts provided under
+<tt>contrib</tt>.</p></div>
+<div class="para"><p>The usage is quite simple, and works the same way for all the
+scripts:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>    contrib/07to08.py /path/cherokee.conf.07 /path/cherokee.conf.08</tt></pre>
+</div></div>
+<div class="para"><p>If you need to upgrade from a really old release, simply apply the
+whole chain of conversions.</p></div>
+<div class="para"><p>Note that some of the available prepackaged versions of Cherokee
+are set to offer the possibillity of automatically running these scripts
+to upgrade the configuration if files from a prior release is detected
+in the system.</p></div>
+<div class="para"><p>Every effort is made to bulletproof the upgrade scripts. If any of
+them does not work for you, do not hesitate to send a bug report.
+However, Cherokee is a very active project and has been steadily
+advancing and incorporating technical improvements. You should really be
+using <a href="bundle_cherokee-admin.html">cherokee-admin</a> to configure your
+system if you want to take full advantage of the new features. Even if
+the upgrade process is successful, you should use the new configuration
+file as a start point and go through the normal configuration process
+using <a href="bundle_cherokee-admin.html">cherokee-admin</a>.</p></div>
+</div>
+<div id="footer">
+<div id="footer-text">
+</div>
+</div>
+</body>
+</html>
